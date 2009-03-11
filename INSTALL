@@ -1,0 +1,19 @@
+La instalacion por el momento esta muy rustica.
+
+PASOS
+
+Instalar python-tumblr
+- $ wget -c http://python-tumblr.googlecode.com/files/python-tumblr-0.1.zip
+- $ gunzip python-tumblr-0.1.zip
+- $ cd python-tumblr
+- # python setup.py install
+
+Instalando simplejson
+NOTA: Utilizo django para otros proyectos y ya incluye simplejson, es el que uso.
+- $ wget -c http://www.djangoproject.com/download/1.0.2/tarball/
+- $ tar xzvf Django-1.0.2-final.tar.gz
+- $ cd Django-1.0.2-final
+- $ sudo python setup.py install
+
+Clonando el proyecto
+git clone git@github.com:jyr/opentumblr.git  

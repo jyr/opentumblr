@@ -14,7 +14,8 @@ class Dashboard(wx.Panel):
     def __init__(self, *args, **kwds):
         # begin wxGlade: Dashboard.__init__
         kwds["style"] = wx.SIMPLE_BORDER|wx.FULL_REPAINT_ON_RESIZE
-        wx.Panel.__init__(self, *args, **kwds)
+        self.api = args[1]
+        wx.Panel.__init__(self, args[0], **kwds)
         self.p_botones = wx.Panel(self, -1)
         self.s_dashboard_staticbox = wx.StaticBox(self, -1, "")
         self.s_botones_staticbox = wx.StaticBox(self.p_botones, -1, "")
@@ -31,7 +32,7 @@ class Dashboard(wx.Panel):
         self.b_logout = wx.Button(self.p_botones, -1, "Log out")
         
         self.Bind(wx.EVT_BUTTON, self.OnText, id = self.bmap_text.GetId())
-
+        #assert False,args[1].email
         self.__set_properties()
         self.__do_layout()
         # end wxGlade)
@@ -87,5 +88,5 @@ class Dashboard(wx.Panel):
 # end of class Dashboard
 
     def OnText(self, evt):
-		self.text = Text(self)
+		self.text = Text(self, self.api)
 		self.text.Show()

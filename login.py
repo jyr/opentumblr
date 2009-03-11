@@ -28,10 +28,10 @@ class Login(wx.Frame):
         self.l_tumblr = wx.StaticText(self, -1, "Tumblr", style=wx.ALIGN_CENTRE)
         self.l_login = wx.StaticText(self.panel_login, -1, "Log in")
         self.l_mail = wx.StaticText(self.panel_login, -1, "E-mail address")
-        self.tc_mail = wx.TextCtrl(self.panel_login, -1, "", style=wx.TE_PROCESS_ENTER|wx.TE_PROCESS_TAB)
+        self.tc_mail = wx.TextCtrl(self.panel_login, -1, "")
         self.tc_mail.SetValue("mi mail")
         self.l_password = wx.StaticText(self.panel_login, -1, "Password")
-        self.tc_password = wx.TextCtrl(self.panel_login, -1, "", style=wx.TE_PROCESS_TAB|wx.TE_PASSWORD)
+        self.tc_password = wx.TextCtrl(self.panel_login, -1, "", style=wx.TE_PASSWORD)
         self.b_login = wx.Button(self.panel_login, -1, "Login")
         
         self.Bind(wx.EVT_BUTTON, self.OnAuthTumblr, id = self.b_login.GetId())
@@ -41,7 +41,7 @@ class Login(wx.Frame):
         # end wxGlade
         
     def OnAuthTumblr(self, event):
-    	self.Blog = ''
+    	self.Blog = 'jyr.tumblr.com'
     	self.User = self.tc_mail.GetValue()
     	self.Password = self.tc_password.GetValue()
     	
@@ -49,7 +49,7 @@ class Login(wx.Frame):
     	#assert False,dir(self.api)
     	try:
     		self.auth = self.api.auth_check()
-    		self.dashboard = Dashboard(self)
+    		self.dashboard = Dashboard(self, self.api)
     		print "Te haz logueado"
     	except tumblr.TumblrAuthError:
     		self.invalid = Invalid(self)

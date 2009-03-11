@@ -10,6 +10,7 @@ import urllib2
 
 import wx
 from dashboard import Dashboard
+from invalid import Invalid
 
 # begin wxGlade: extracode
 # end wxGlade
@@ -51,6 +52,8 @@ class Login(wx.Frame):
     		self.dashboard = Dashboard(self)
     		print "Te haz logueado"
     	except tumblr.TumblrAuthError:
+    		self.invalid = Invalid(self)
+    		self.invalid.Show()
     		print errors['403']
     	except urllib2.HTTPError:
     		print errors['404']

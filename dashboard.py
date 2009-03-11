@@ -4,6 +4,7 @@
 
 import wx
 
+from text import Text
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -19,7 +20,7 @@ class Dashboard(wx.Panel):
         self.s_botones_staticbox = wx.StaticBox(self.p_botones, -1, "")
         self.l_dashboard = wx.StaticText(self, -1, "Dashboard", style=wx.ALIGN_CENTRE)
         self.sl_dashboard = wx.StaticLine(self, -1)
-        self.bmap_text = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("/home/jyr/opentumblr/opentumblr/images/text.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_text = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("images/text.png", wx.BITMAP_TYPE_ANY))
         self.bmap_photo = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("/home/jyr/opentumblr/opentumblr/images/photo.png", wx.BITMAP_TYPE_ANY))
         self.bmap_quote = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("/home/jyr/opentumblr/opentumblr/images/quote.png", wx.BITMAP_TYPE_ANY))
         self.bmap_link = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("/home/jyr/opentumblr/opentumblr/images/link.png", wx.BITMAP_TYPE_ANY))
@@ -28,11 +29,13 @@ class Dashboard(wx.Panel):
         self.bmap_video = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("/home/jyr/opentumblr/opentumblr/images/video.png", wx.BITMAP_TYPE_ANY))
         self.sl_botones = wx.StaticLine(self.p_botones, -1)
         self.b_logout = wx.Button(self.p_botones, -1, "Log out")
+        
+        self.Bind(wx.EVT_BUTTON, self.OnText, id = self.bmap_text.GetId())
 
         self.__set_properties()
         self.__do_layout()
-        # end wxGlade
-
+        # end wxGlade)
+		
     def __set_properties(self):
         # begin wxGlade: Dashboard.__set_properties
         self.SetBackgroundColour(wx.Colour(55, 85, 113))
@@ -83,4 +86,6 @@ class Dashboard(wx.Panel):
 
 # end of class Dashboard
 
-
+    def OnText(self, evt):
+		self.text = Text(self)
+		self.text.Show()

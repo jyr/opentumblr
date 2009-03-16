@@ -5,6 +5,7 @@
 import wx
 
 from text import Text
+from quote import Quote
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -31,6 +32,7 @@ class Dashboard(wx.Panel):
         self.b_logout = wx.Button(self.p_botones, -1, "Log out")
         
         self.Bind(wx.EVT_BUTTON, self.OnText, id = self.bmap_text.GetId())
+        self.Bind(wx.EVT_BUTTON, self.OnQuote, id = self.bmap_quote.GetId())
 
         self.__set_properties()
         self.__do_layout()
@@ -90,3 +92,6 @@ class Dashboard(wx.Panel):
 		self.text = Text(self, self.api)
 		self.text.Show()
 
+    def OnQuote(self, evt):
+		self.quote = Quote(self, self.api)
+		self.quote.Show()

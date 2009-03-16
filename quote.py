@@ -13,7 +13,8 @@ class Quote(wx.Dialog):
     def __init__(self, *args, **kwds):
         # begin wxGlade: Quote.__init__
         kwds["style"] = wx.DEFAULT_DIALOG_STYLE
-        wx.Dialog.__init__(self, *args, **kwds)
+        wx.Dialog.__init__(self, args[0], **kwds)
+        self.api = args[1]
         self.p_options = wx.Panel(self, -1)
         self.p_quote = wx.Panel(self, -1)
         self.s_options_staticbox = wx.StaticBox(self.p_options, -1, "")
@@ -35,6 +36,8 @@ class Quote(wx.Dialog):
         self.tc_tag = wx.TextCtrl(self.p_options, -1, "", style=wx.TE_MULTILINE)
         self.l_url = wx.StaticText(self.p_options, -1, "Set a custom post URL")
         self.tc_url = wx.TextCtrl(self.p_options, -1, "/post/123456/")
+
+        self.Bind(wx.EVT_BUTTON, self.OnCreateQuote, id = self.b_create.GetId())
 
         self.__set_properties()
         self.__do_layout()
@@ -104,10 +107,17 @@ class Quote(wx.Dialog):
         gs_quote.Fit(self)
         self.Layout()
         # end wxGlade
-
+        
+    def OnCreateQuote(self, evt):
+		self.quote = self.tc_quote.GetValue()
+		self.source = self.tc_source.GetValue()
+		try:
+			self.post = self.api.write_quote(self.quote, self.source)
+		except:
+			print "posteado en el blog primario"
+		self.Close()
 # end of class Quote
-
-
+		
 if __name__ == "__main__":
     app = wx.PySimpleApp(0)
     wx.InitAllImageHandlers()

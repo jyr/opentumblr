@@ -15,7 +15,7 @@ class Invalid(wx.Dialog):
         kwds["style"] = wx.DEFAULT_DIALOG_STYLE
         wx.Dialog.__init__(self, *args, **kwds)
         self.sizer_1_staticbox = wx.StaticBox(self, -1, "Error")
-        self.l_invalid = wx.StaticText(self, -1, "Mail o usuario incorrectos")
+        self.l_invalid = wx.StaticText(self, -1, "Invalid email or password. Please try again")
         self.b_invalid = wx.Button(self, wx.ID_OK, "")
 
         self.__set_properties()

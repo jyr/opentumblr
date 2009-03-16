@@ -29,9 +29,10 @@ class Login(wx.Frame):
         self.l_login = wx.StaticText(self.panel_login, -1, "Log in")
         self.l_mail = wx.StaticText(self.panel_login, -1, "E-mail address")
         self.tc_mail = wx.TextCtrl(self.panel_login, -1, "")
-        self.tc_mail.SetValue("mi mail")
         self.l_password = wx.StaticText(self.panel_login, -1, "Password")
         self.tc_password = wx.TextCtrl(self.panel_login, -1, "", style=wx.TE_PASSWORD)
+        self.l_blog = wx.StaticText(self.panel_login, -1, "Blog")
+        self.tc_blog = wx.TextCtrl(self.panel_login, -1, "")
         self.b_login = wx.Button(self.panel_login, -1, "Login")
         
         self.Bind(wx.EVT_BUTTON, self.OnAuthTumblr, id = self.b_login.GetId())
@@ -41,7 +42,7 @@ class Login(wx.Frame):
         # end wxGlade
         
     def OnAuthTumblr(self, event):
-    	self.Blog = 'jyr.tumblr.com'
+    	self.Blog = ''
     	self.User = self.tc_mail.GetValue()
     	self.Password = self.tc_password.GetValue()
     	
@@ -72,7 +73,7 @@ class Login(wx.Frame):
         self.l_tumblr.SetBackgroundColour(wx.Colour(55, 85, 113))
         self.l_tumblr.SetForegroundColour(wx.Colour(255, 255, 255))
         self.l_tumblr.SetFont(wx.Font(30, wx.SWISS, wx.NORMAL, wx.NORMAL, 0, ""))
-        self.l_login.SetMinSize((74, 30))
+        self.l_login.SetMinSize((74, 45))
         self.l_login.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.l_login.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.l_mail.SetMinSize((260, 30))
@@ -80,13 +81,18 @@ class Login(wx.Frame):
         self.l_mail.SetFont(wx.Font(20, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.tc_mail.SetMinSize((260, 30))
         self.tc_mail.SetBackgroundColour(wx.Colour(255, 255, 255))
-        self.tc_mail.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        self.tc_mail.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.l_password.SetMinSize((260, 30))
         self.l_password.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.l_password.SetFont(wx.Font(20, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.tc_password.SetMinSize((260, 30))
         self.tc_password.SetBackgroundColour(wx.Colour(255, 255, 255))
-        self.tc_password.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        self.tc_password.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        self.l_blog.SetBackgroundColour(wx.Colour(255, 255, 255))
+        self.l_blog.SetFont(wx.Font(20, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Sans"))
+        self.tc_blog.SetMinSize((260, 30))
+        self.tc_blog.SetBackgroundColour(wx.Colour(255, 255, 255))
+        self.tc_blog.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.panel_login.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.panel.SetBackgroundColour(wx.Colour(55, 85, 113))
         # end wxGlade
@@ -97,11 +103,13 @@ class Login(wx.Frame):
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer_login = wx.StaticBoxSizer(self.sizer_login_staticbox, wx.VERTICAL)
         sizer_1.Add(self.l_tumblr, 0, wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 0)
-        sizer_login.Add(self.l_login, 0, wx.ALL|wx.EXPAND, 10)
+        sizer_login.Add(self.l_login, 0, wx.ALL|wx.EXPAND, 5)
         sizer_login.Add(self.l_mail, 0, wx.ALL|wx.EXPAND, 10)
         sizer_login.Add(self.tc_mail, 0, wx.ALL|wx.EXPAND, 10)
         sizer_login.Add(self.l_password, 0, wx.ALL|wx.EXPAND, 10)
         sizer_login.Add(self.tc_password, 0, wx.ALL|wx.EXPAND, 10)
+        sizer_login.Add(self.l_blog, 0, wx.ALL|wx.EXPAND|wx.ADJUST_MINSIZE, 10)
+        sizer_login.Add(self.tc_blog, 0, wx.ALL|wx.EXPAND|wx.ADJUST_MINSIZE, 10)
         sizer_login.Add((30, 30), 0, wx.ALL|wx.EXPAND, 10)
         sizer_login.Add(self.b_login, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 10)
         self.panel_login.SetSizer(sizer_login)

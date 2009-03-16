@@ -6,6 +6,7 @@ import wx
 
 from text import Text
 from quote import Quote
+from link import Link
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -33,6 +34,7 @@ class Dashboard(wx.Panel):
         
         self.Bind(wx.EVT_BUTTON, self.OnText, id = self.bmap_text.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnQuote, id = self.bmap_quote.GetId())
+        self.Bind(wx.EVT_BUTTON, self.OnLink, id = self.bmap_link.GetId())
 
         self.__set_properties()
         self.__do_layout()
@@ -95,3 +97,7 @@ class Dashboard(wx.Panel):
     def OnQuote(self, evt):
 		self.quote = Quote(self, self.api)
 		self.quote.Show()
+		
+    def OnLink(self, evt):
+    	self.link = Link(self, self.api)
+    	self.link.Show()

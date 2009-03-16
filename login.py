@@ -42,7 +42,7 @@ class Login(wx.Frame):
         # end wxGlade
         
     def OnAuthTumblr(self, event):
-    	self.Blog = ''
+    	self.Blog = self.tc_blog.GetValue()
     	self.User = self.tc_mail.GetValue()
     	self.Password = self.tc_password.GetValue()
     	

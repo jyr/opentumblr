@@ -43,6 +43,10 @@ class Login(wx.Frame):
         
     def OnAuthTumblr(self, event):
     	self.Blog = self.tc_blog.GetValue()
+    	#if not self.Blog:
+    		#self.Blog = ''
+    		#assert False,self.Blog
+    		#print "Conectado al blog primario: "
     	self.User = self.tc_mail.GetValue()
     	self.Password = self.tc_password.GetValue()
     	

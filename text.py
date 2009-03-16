@@ -116,8 +116,11 @@ class Text(wx.Dialog):
     def OnCreatePost(self, evt):
 		self.title = self.tc_title.GetValue()
 		self.body = self.tc_post.GetValue()
-		self.post = self.api.write_regular(self.title, self.body)
-		print "Posteado en " % self.post
+		try:
+			self.post = self.api.write_regular(self.title, self.body)
+		except UnicodeError:
+			print "Posteado en blog primario"	
+		#print "Posteado en " % self.post
 		#assert False,dir(self.post.values)
 		self.Close()
 

@@ -230,12 +230,20 @@ class Api:
 		params['date'] = self.date
 		params['tags'] = self.tags
 		params['format'] = self.format
+
+		if not params['date']:
+			params['date'] = 'now'
+		if not params['tags']:
+			del params['tags']
+		if not params['format']:
+			del params['format']
 		#assert False,params
+
 		if not 'data' in params:
 			data = urlencode(params)
 		else:
 			data, headers = multipart_encode(params)
-		#assert False,params
+
 		if headers:
 			req = Request(url, data, headers)
 		else:

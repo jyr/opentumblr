@@ -5,6 +5,7 @@
 import wx
 
 from text import Text
+from photo import Photo
 from quote import Quote
 from link import Link
 from chat import Chat
@@ -35,6 +36,7 @@ class Dashboard(wx.Panel):
         self.b_logout = wx.Button(self.p_botones, -1, "Log out")
         
         self.Bind(wx.EVT_BUTTON, self.OnText, id = self.bmap_text.GetId())
+        self.Bind(wx.EVT_BUTTON, self.OnPhoto, id = self.bmap_photo.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnQuote, id = self.bmap_quote.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnLink, id = self.bmap_link.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnChat, id = self.bmap_chat.GetId())
@@ -97,6 +99,10 @@ class Dashboard(wx.Panel):
     def OnText(self, evt):
 		self.text = Text(self, self.api)
 		self.text.Show()
+	
+    def	OnPhoto(self, evt):
+    	self.photo = Photo(self, self.api)
+    	self.photo.Show()
 
     def OnQuote(self, evt):
 		self.quote = Quote(self, self.api)

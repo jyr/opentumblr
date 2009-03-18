@@ -14,7 +14,8 @@ class Photo(wx.Dialog):
     def __init__(self, *args, **kwds):
         # begin wxGlade: Photo.__init__
         kwds["style"] = wx.DEFAULT_DIALOG_STYLE
-        wx.Dialog.__init__(self, *args, **kwds)
+        wx.Dialog.__init__(self, args[0], **kwds)
+        self.api = args[1]
         self.p_options = wx.Panel(self, -1)
         self.p_photo = wx.Panel(self, -1)
         self.s_photourl_staticbox = wx.StaticBox(self.p_photo, -1, "")
@@ -44,6 +45,8 @@ class Photo(wx.Dialog):
         self.tc_tag = wx.TextCtrl(self.p_options, -1, "", style=wx.TE_MULTILINE)
         self.l_url = wx.StaticText(self.p_options, -1, "Set a custom post URL")
         self.tc_url = wx.TextCtrl(self.p_options, -1, "/post/123456/")
+        
+        self.Bind(wx.EVT_BUTTON, self.OnCreatePhoto, id = self.b_create.GetId())
 
         self.__set_properties()
         self.__do_layout()
@@ -131,6 +134,23 @@ class Photo(wx.Dialog):
         self.Layout()
         # end wxGlade
 
+    def OnCreatePhoto(self, evt):
+    	self.source = self.tc_photourl.GetValue()
+    	if not self.source:
+    		self.source = None
+    		
+    	self.data = self.b_browse.GetValue()
+    	if not self.data:
+    		self.data = None
+    		
+    	self.caption = self.tc_caption.GetValue()
+    	self.click  = self.tc_photolink.GetValue()
+    	try:
+    		self.post = self.api.write_photo(self.source, self.data, self.caption, self.click)
+    	except:
+    		print "Posteado en el primario"
+    	self.Close()
+    	
 # end of class Photo
 
 

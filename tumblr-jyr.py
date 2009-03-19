@@ -196,6 +196,22 @@ class Api:
 		args['type'] = 'conversation'
 		return self._write(args)
 
+	def write_audio(self, data=None, source=None, caption=None, **args):
+		if data:
+			args['data'] = open(data)
+		else:
+			args['data'] = urlopen(source).read()
+
+		args['caption'] = caption
+		args = self._fixnames(args)
+		
+		if not 'data' in args:
+			raise TumblrError("Must supply data argument")
+
+		self.auth_check()
+		args['type'] = 'audio'
+		return self._write(args)
+
 	def write_video(self, embed=None, caption=None, **args): 
 		if embed:
 			args['embed'] = embed
@@ -230,14 +246,12 @@ class Api:
 		params['date'] = self.date
 		params['tags'] = self.tags
 		params['format'] = self.format
-
 		if not params['date']:
 			params['date'] = 'now'
 		if not params['tags']:
 			del params['tags']
 		if not params['format']:
 			del params['format']
-		#assert False,params
 
 		if not 'data' in params:
 			data = urlencode(params)

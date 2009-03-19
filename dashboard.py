@@ -9,6 +9,7 @@ from photo import Photo
 from quote import Quote
 from link import Link
 from chat import Chat
+from audio import Audio
 from video import Video
 # begin wxGlade: extracode
 # end wxGlade
@@ -40,6 +41,7 @@ class Dashboard(wx.Panel):
         self.Bind(wx.EVT_BUTTON, self.OnQuote, id = self.bmap_quote.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnLink, id = self.bmap_link.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnChat, id = self.bmap_chat.GetId())
+        self.Bind(wx.EVT_BUTTON, self.OnAudio, id = self.bmap_audio.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnVideo, id = self.bmap_video.GetId())
 
         self.__set_properties()
@@ -116,6 +118,10 @@ class Dashboard(wx.Panel):
     	self.chat = Chat(self, self.api)
     	self.chat.Show()
 
+    def OnAudio(self, evt):
+    	self.audio = Audio(self, self.api)
+    	self.audio.Show()
+    	
     def OnVideo(self, evt):
     	self.video = Video(self, self.api)
     	self.video.Show()

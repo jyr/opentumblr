@@ -8,13 +8,14 @@ doc_files =['AUTHORS','INSTALL','LICENSE','PKG-INFO','README']
 
 install_dir = get_python_lib() + '/opentumblr/images/'
 
-setup(name="OpenTumblr",
-      version="0.1",
+setup(name="opentumblr",
+      version="BETA",
       description="Cliente de escritorio para tumblr",
       author="Jair Gaxiola",
       author_email="jyr.gaxiola@gmail.com",
       url="http://github.com/jyr/opentumblr",
       license="MIT LICENSE",
+      scripts=['opentumblr/login.py'],
       packages=['opentumblr'],
       py_modules=['tumblr'],
       data_files=[(install_dir, image_files)]

@@ -4,7 +4,6 @@ Es un cliente multiplataforma desarrollado en wxpython
 REQUERIMIENTOS
 - python-tumblr ( http://code.google.com/p/python-tumblr/ )
 - simplejson ( http://code.google.com/p/simplejson/ ) 
-  en django-utils se encuentra simplejson, asi es como se esta trabajando
 - wxpython
 - python, por supuesto
 

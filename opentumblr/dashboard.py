@@ -4,6 +4,7 @@
 
 import wx
 
+from distutils.sysconfig import get_python_lib
 from text import Text
 from photo import Photo
 from quote import Quote
@@ -21,18 +22,19 @@ class Dashboard(wx.Panel):
         # begin wxGlade: Dashboard.__init__
         self.api = args[1]
         wx.Panel.__init__(self, args[0], **kwds)
+        self.install_dir = get_python_lib() + '/opentumblr/images/'
         self.p_botones = wx.Panel(self, -1)
         self.s_dashboard_staticbox = wx.StaticBox(self, -1, "")
         self.s_botones_staticbox = wx.StaticBox(self.p_botones, -1, "")
         self.l_dashboard = wx.StaticText(self, -1, "Dashboard", style=wx.ALIGN_CENTRE)
         self.sl_dashboard = wx.StaticLine(self, -1)
-        self.bmap_text = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("images/text.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_photo = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("images/photo.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_quote = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("images/quote.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_link = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("images/link.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_chat = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("images/chat.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_audio = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("images/audio.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_video = wx.BitmapButton(self.p_botones, -1, wx.Bitmap("images/video.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_text = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"text.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_photo = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"photo.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_quote = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"quote.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_link = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"link.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_chat = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"chat.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_audio = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"audio.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_video = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"video.png", wx.BITMAP_TYPE_ANY))
         self.sl_botones = wx.StaticLine(self.p_botones, -1)
         self.b_logout = wx.Button(self.p_botones, -1, "Log out")
         
@@ -43,6 +45,7 @@ class Dashboard(wx.Panel):
         self.Bind(wx.EVT_BUTTON, self.OnChat, id = self.bmap_chat.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnAudio, id = self.bmap_audio.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnVideo, id = self.bmap_video.GetId())
+        self.Bind(wx.EVT_BUTTON, self.OnLogout, id = self.b_logout.GetId())
 
         self.__set_properties()
         self.__do_layout()
@@ -125,3 +128,6 @@ class Dashboard(wx.Panel):
     def OnVideo(self, evt):
     	self.video = Video(self, self.api)
     	self.video.Show()
+    
+    def OnLogout(self, evt):
+    	self.Close()

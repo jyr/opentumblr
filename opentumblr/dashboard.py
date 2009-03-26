@@ -15,7 +15,8 @@ from video import Video
 # begin wxGlade: extracode
 # end wxGlade
 
-
+#zodman import
+import os, sys
 
 class Dashboard(wx.Panel):
     def __init__(self, *args, **kwds):
@@ -23,6 +24,9 @@ class Dashboard(wx.Panel):
         self.api = args[1]
         wx.Panel.__init__(self, args[0], **kwds)
         self.install_dir = get_python_lib() + '/opentumblr/images/'
+        if not os.path.isdir( self.install_dir):
+            self.install_dir = os.path.abspath(os.path.dirname(__file__)) +'/images/'
+        
         self.p_botones = wx.Panel(self, -1)
         self.s_dashboard_staticbox = wx.StaticBox(self, -1, "")
         self.s_botones_staticbox = wx.StaticBox(self.p_botones, -1, "")

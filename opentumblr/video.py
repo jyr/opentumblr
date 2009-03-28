@@ -113,7 +113,7 @@ class Video(wx.Dialog):
 
     def OnCreateVideo(self, evt):
     	self.embed = self.tc_embed.GetValue()
-    	self.caption = self.tc_caption.GetValue()
+    	self.caption = self.tc_caption.GetValue().encode('utf-8')
     	try:
     		self.post = self.api.write_video(self.embed, self.caption)
     	except:

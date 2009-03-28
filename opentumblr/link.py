@@ -119,9 +119,9 @@ class Link(wx.Dialog):
         # end wxGlade
     
     def OnCreateLink(self, evt):
-    	self.name = self.tc_name.GetValue()
+    	self.name = self.tc_name.GetValue().encode('utf-8')
     	self.urllink = self.tc_urllink.GetValue()
-    	self.description = self.tc_description.GetValue()
+    	self.description = self.tc_description.GetValue().encode('utf-8')
     	try:
     		self.post = self.api.write_link(self.name,self.urllink,self.description)
     	except UnicodeError:

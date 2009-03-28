@@ -126,7 +126,7 @@ class Audio(wx.Dialog):
     	if not self.source:
     		self.source = None
     		
-    	self.caption = self.tc_caption.GetValue()
+    	self.caption = self.tc_caption.GetValue().encode('utf-8')
     	try:
     		self.post = self.api.write_audio(self.data, self.source, self.caption)
     	except:

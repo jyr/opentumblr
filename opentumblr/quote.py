@@ -109,8 +109,8 @@ class Quote(wx.Dialog):
         # end wxGlade
         
     def OnCreateQuote(self, evt):
-		self.quote = self.tc_quote.GetValue()
-		self.source = self.tc_source.GetValue()
+		self.quote = self.tc_quote.GetValue().encode('utf-8')
+		self.source = self.tc_source.GetValue().encode('utf-8')
 		try:
 			self.post = self.api.write_quote(self.quote, self.source)
 		except:

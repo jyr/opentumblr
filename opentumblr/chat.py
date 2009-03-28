@@ -119,8 +119,8 @@ class Chat(wx.Dialog):
         # end wxGlade
 
     def OnCreateChat(self, evt):
-    	self.title = self.tc_title.GetValue()
-    	self.conversation = self.tc_dialogue.GetValue()
+    	self.title = self.tc_title.GetValue().encode('utf-8')
+    	self.conversation = self.tc_dialogue.GetValue().encode('utf-8')
     	try:
     		self.post = self.api.write_conversation(self.title, self.conversation)
     	except:

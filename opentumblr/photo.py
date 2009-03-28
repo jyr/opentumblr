@@ -143,7 +143,7 @@ class Photo(wx.Dialog):
     	if not self.data:
     		self.data = None
     		
-    	self.caption = self.tc_caption.GetValue()
+    	self.caption = self.tc_caption.GetValue().encode('utf-8')
     	self.click  = self.tc_photolink.GetValue()
     	try:
     		self.post = self.api.write_photo(self.source, self.data, self.caption, self.click)

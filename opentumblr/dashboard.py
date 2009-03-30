@@ -23,22 +23,22 @@ class Dashboard(wx.Panel):
         # begin wxGlade: Dashboard.__init__
         self.api = args[1]
         wx.Panel.__init__(self, args[0], **kwds)
-        self.install_dir = get_python_lib() + '/opentumblr/images/'
-        if not os.path.isdir( self.install_dir):
-            self.install_dir = os.path.abspath(os.path.dirname(__file__)) +'/images/'
+        self.path_images = '/usr/share/pixmaps/opentumblr/dashboard/'
+        if not os.path.isdir(self.path_images):
+            os.mkdir(self.path_images)
         
         self.p_botones = wx.Panel(self, -1)
         self.s_dashboard_staticbox = wx.StaticBox(self, -1, "")
         self.s_botones_staticbox = wx.StaticBox(self.p_botones, -1, "")
         self.l_dashboard = wx.StaticText(self, -1, "Dashboard", style=wx.ALIGN_CENTRE)
         self.sl_dashboard = wx.StaticLine(self, -1)
-        self.bmap_text = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"text.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_photo = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"photo.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_quote = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"quote.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_link = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"link.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_chat = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"chat.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_audio = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"audio.png", wx.BITMAP_TYPE_ANY))
-        self.bmap_video = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.install_dir+"video.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_text = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.path_images+"text.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_photo = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.path_images+"photo.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_quote = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.path_images+"quote.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_link = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.path_images+"link.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_chat = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.path_images+"chat.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_audio = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.path_images+"audio.png", wx.BITMAP_TYPE_ANY))
+        self.bmap_video = wx.BitmapButton(self.p_botones, -1, wx.Bitmap(self.path_images+"video.png", wx.BITMAP_TYPE_ANY))
         self.sl_botones = wx.StaticLine(self.p_botones, -1)
         self.b_logout = wx.Button(self.p_botones, -1, "Log out")
         

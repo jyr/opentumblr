@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=OpentTumblr Client
+Name=OpenTumblr Client
 GenericName=Tumblr Client
 Comment=Crossplatform desktop client developed in wxPython for tumblr
-Name[es]= Client OpenTumblr
+Name[es]= Cliente OpenTumblr
 GenericName[es]= Cliente Tumblr
 Comment[es]=Cliente de escritorio multiplataforma desarrollado en wxpython para tumblr
 Exec=login.py

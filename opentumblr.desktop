@@ -9,5 +9,5 @@ Exec=login.py
 Type=Application
 Terminal=false
 Categories=Application;Network;
-#Icon=opentumblr
+Icon=opentumblr
 

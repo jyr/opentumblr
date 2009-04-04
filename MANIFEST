@@ -6,6 +6,7 @@ README
 THANKS
 setup.py
 tumblr.py
+opentumblr.desktop
 opentumblr/__init__.py
 opentumblr/audio.py
 opentumblr/chat.py
@@ -24,3 +25,5 @@ opentumblr/images/photo.png
 opentumblr/images/quote.png
 opentumblr/images/text.png
 opentumblr/images/video.png
+opentumblr/images/opentumblr.png
+opentumblr/images/opentumblr.xpm

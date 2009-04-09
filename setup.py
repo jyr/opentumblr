@@ -28,7 +28,7 @@ setup(name="opentumblr",
       author_email="jyr.gaxiola@gmail.com",
       url="http://github.com/jyr/opentumblr",
       license="MIT LICENSE",
-      scripts=['opentumblr/login.py'],
+      scripts=['opentumblr/opentumblr-client.py'],
       packages=['opentumblr'],
       data_files=[('/usr/share/pixmaps/', icon_files),(ipath_dashboard, image_files),(ipath_docs, doc_files),(ipath_desktop,['opentumblr.desktop'])]
 )

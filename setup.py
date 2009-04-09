@@ -30,6 +30,5 @@ setup(name="opentumblr",
       license="MIT LICENSE",
       scripts=['opentumblr/login.py'],
       packages=['opentumblr'],
-      py_modules=['tumblr'],
       data_files=[('/usr/share/pixmaps/', icon_files),(ipath_dashboard, image_files),(ipath_docs, doc_files),(ipath_desktop,['opentumblr.desktop'])]
 )

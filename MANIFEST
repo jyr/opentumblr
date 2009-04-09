@@ -17,6 +17,7 @@ opentumblr/login.py
 opentumblr/photo.py
 opentumblr/quote.py
 opentumblr/text.py
+opentumblr/tumblr.py
 opentumblr/video.py
 opentumblr/images/audio.png
 opentumblr/images/chat.png

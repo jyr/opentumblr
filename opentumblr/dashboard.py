@@ -4,7 +4,7 @@
 
 import wx
 
-from distutils.sysconfig import get_python_lib
+#from distutils.sysconfig import get_python_lib
 from text import Text
 from photo import Photo
 from quote import Quote
@@ -25,7 +25,7 @@ class Dashboard(wx.Panel):
         wx.Panel.__init__(self, args[0], **kwds)
         self.path_images = '/usr/share/pixmaps/opentumblr/dashboard/'
         if not os.path.isdir(self.path_images):
-            os.mkdir(self.path_images)
+            self.path_images = os.path.abspath(os.path.dirname(__file__)) + '/images/'
         
         self.p_botones = wx.Panel(self, -1)
         self.s_dashboard_staticbox = wx.StaticBox(self, -1, "")

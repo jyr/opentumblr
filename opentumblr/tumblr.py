@@ -127,7 +127,7 @@ class Api:
 
 
 	def write_regular(self, title=None, body=None, **args): 
-		if title:	
+		if title:
 			args['title'] = title
 		if body: 
 			args['body'] = body 
@@ -246,6 +246,7 @@ class Api:
 		params['date'] = self.date
 		params['tags'] = self.tags
 		params['format'] = self.format
+
 		if not params['date']:
 			params['date'] = 'now'
 		if not params['tags']:
@@ -262,9 +263,11 @@ class Api:
 			req = Request(url, data, headers)
 		else:
 			req = Request(url, data)
+
 		newid = None
 		try: 
-			urlopen(req)
+			f = urlopen(req)
+			print f.read()
 			raise TumblrError("Error writing post")
 
 		except HTTPError, e:

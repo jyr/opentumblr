@@ -117,7 +117,7 @@ class Text(wx.Dialog):
 		self.body = self.tc_post.GetValue().encode('utf-8')
 		try:
 			self.post = self.api.write_regular(self.title, self.body)
-		except UnicodeError:
+		except:
 			print "Posteado en blog primario"	
 		#print "Posteado en " % self.post
 		#assert False,dir(self.post.values)

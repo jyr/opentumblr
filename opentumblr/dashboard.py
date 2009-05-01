@@ -101,7 +101,6 @@ class Dashboard(wx.Panel):
     def OnText(self, evt):
     	self.text = Text(self, self.api)
     	self.text.Show()
-    	evt.Skip()
 
     def	OnPhoto(self, evt):
     	self.photo = Photo(self, self.api)
@@ -128,5 +127,5 @@ class Dashboard(wx.Panel):
     	self.video.Show()
 
     def OnLogout(self, evt):
-    	self.Close()
+    	self.Destroy()
 

@@ -124,7 +124,7 @@ class Link(wx.Dialog):
     	self.description = self.tc_description.GetValue().encode('utf-8')
     	try:
     		self.post = self.api.write_link(self.name,self.urllink,self.description)
-    	except UnicodeError:
+    	except:
     		print "posteado en el blog primario"
     	self.Close()
 

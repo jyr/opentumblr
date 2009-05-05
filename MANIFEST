@@ -13,7 +13,7 @@ opentumblr/chat.py
 opentumblr/dashboard.py
 opentumblr/invalid.py
 opentumblr/link.py
-opentumblr/login.py
+opentumblr/opentumblr-client.py
 opentumblr/photo.py
 opentumblr/quote.py
 opentumblr/text.py

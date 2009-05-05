@@ -56,7 +56,7 @@ class Photo(wx.Dialog):
 
     def __set_properties(self):
         # begin wxGlade: Photo.__set_properties
-        self.SetTitle("frame_2")
+        self.SetTitle("Upload a Photo")
         self.l_addphoto.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.l_addphoto.SetFont(wx.Font(40, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_photo.SetBackgroundColour(wx.Colour(255, 255, 255))

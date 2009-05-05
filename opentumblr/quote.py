@@ -46,7 +46,7 @@ class Quote(wx.Dialog):
 
     def __set_properties(self):
         # begin wxGlade: Quote.__set_properties
-        self.SetTitle("Add Text Post")
+        self.SetTitle("Add a Quote")
         self.SetBackgroundColour(wx.Colour(55, 85, 113))
         self.l_addquote.SetMinSize((-1, 80))
         self.l_addquote.SetBackgroundColour(wx.Colour(255, 255, 255))

@@ -61,7 +61,7 @@ class Login(wx.Frame):
     		self.auth = self.api.auth_check()
     		self.dashboard = Dashboard(self, self.api)
     		print "Te haz logueado"
-    	except tumblr.TumblrAuthError:
+    	except opentumblr.tumblr.TumblrAuthError:
     		self.invalid = Invalid(self)
     		self.invalid.Show()
     		print errors['403']

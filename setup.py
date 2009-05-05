@@ -1,7 +1,7 @@
 import sys
 
 NAME="opentumblr-client"
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 DESCRIPTION = "Cliente de escritorio para tumblr"
 AUTHOR = "Jair Gaxiola"
 AUTHOR_EMAIL = "jyr.gaxiola@gmail.com"

@@ -13,7 +13,7 @@ Iniciando OpenTumblr
 * OS X
 Download:
 	python http://www.python.org/ftp/python/2.6.2/python-2.6.2-macosx2009-04-16.dmg
-	wxpython http://downloads.sourceforge.net/wxpython/wxPython2.8-osx-ansi-2.8.9.1-universal-py2.6.dmg
+	wxpython http://downloads.sourceforge.net/wxpython/wxPython2.8-osx-unicode-2.8.10.1-universal-py2.6.dmg
 	setuptools http://pypi.python.org/packages/2.6/s/setuptools/setuptools-0.6c9-py2.6.egg#md5=ca37b1ff16fa2ede6e19383e7b59245a	
 	poster http://atlee.ca/software/poster/dist/0.4/poster-0.4.tar.gz
 	simplejson http://pypi.python.org/packages/source/s/simplejson/simplejson-2.0.9.tar.gz#md5=af5e67a39ca3408563411d357e6d5e47

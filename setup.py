@@ -66,6 +66,7 @@ else:
       	url=URL,
       	license=LICENSE,
     	app=APP,
+		packages=['poster', 'simplejson'],
 	    data_files=DATA_FILES,
 	    options={'py2app': OPTIONS},
 	    setup_requires=['py2app'],

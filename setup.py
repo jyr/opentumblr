@@ -40,7 +40,7 @@ if sys.platform == "darwin":
 else:
 	"""
 		Usage:
-			python setup.py py2exe
+			python setup.py py2exe   
 	"""
 	
 	if sys.platform == "win32":

@@ -38,12 +38,12 @@ if sys.platform == "darwin":
 	)
 	
 else:
-	"""
-		Usage:
-			python setup.py py2exe   
-	"""
-	
 	if sys.platform == "win32":
+		"""
+			Usage:
+				python setup.py py2exe   
+		"""
+		
 		from distutils.core import setup
 		import py2exe
 		

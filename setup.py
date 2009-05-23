@@ -1,4 +1,5 @@
 import sys
+import os
 
 NAME="opentumblr-client"
 VERSION = "0.0.2"
@@ -47,11 +48,16 @@ else:
 		from distutils.core import setup
 		import py2exe
 		
+
+		path_images = os.getcwd() + '\\images\\'
+		image_files = [path_images+'audio.png',path_images+'chat.png',path_images+'link.png',path_images+'photo.png',path_images+'quote.png',path_images+'text.png',path_images+'video.png']
+
 		setup(
-			console=['opentumblr/opentumblr-client.py']
+			windows=['opentumblr/opentumblr-client.py'],
+			data_files=[('images',image_files)],
+			options={'py2exe':{'skip_archive':1,'packages':'opentumblr,poster,simplejson'}}
 		)
 	else:
-		import os
 		from distutils.core import setup
 		#from distutils.sysconfig import get_python_lib
 

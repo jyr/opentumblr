@@ -26,7 +26,7 @@ class Dashboard(wx.Panel):
         wx.Panel.__init__(self, args[0], **kwds)
         self.path_images = '/usr/share/pixmaps/opentumblr/dashboard/'
         if not os.path.isdir(self.path_images):
-            self.path_images = os.path.abspath(os.path.dirname(__file__)) + '/images/'
+            self.path_images = os.path.abspath(os.path.dirname(__file__)) + '/../images/'
 
         self.p_botones = wx.Panel(self, -1)
         self.s_botones_staticbox = wx.StaticBox(self.p_botones, -1, "")

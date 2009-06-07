@@ -22,7 +22,7 @@ if sys.platform == "darwin":
 	APP = ['opentumblr/opentumblr-client.py']
 	path_images = os.getcwd() + '/images/'
 	image_files = [path_images+'audio.png',path_images+'chat.png',path_images+'link.png',path_images+'photo.png',path_images+'quote.png',path_images+'text.png',path_images+'video.png']
-	DATA_FILES = ['images',image_files]
+	DATA_FILES = [('images',image_files)]
 	OPTIONS = {'argv_emulation': True}
 
 	setup(
@@ -39,7 +39,7 @@ if sys.platform == "darwin":
 	    options={'py2app': OPTIONS},
 	    setup_requires=['py2app'],
 	)
-	
+
 else:
 	if sys.platform == "win32":
 		from distutils.core import setup

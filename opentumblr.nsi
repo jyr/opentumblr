@@ -1,7 +1,7 @@
 ;--------------------------------
 ;Include Modern UI
 
-  !include "MUI2.nsh"
+  !include "MUI.nsh"
 
 ;Algoritmo de compresión
 SetCompressor lzma
@@ -9,7 +9,6 @@ SetCompressor lzma
 
 ;--------------------------------
 ;Confirmación para abortar la instalación
-;Esta macro debe colocarse en esta posición del script sino no funcionara
   !define mui_abortwarning
 
 ;Definimos variable VERSION
@@ -22,7 +21,7 @@ SetCompressor lzma
   ;Mostramos la página de bienvenida
   !insertmacro MUI_PAGE_WELCOME
   ;Página donde mostramos el contrato de licencia 
-  ;!insertmacro MUI_PAGE_LICENSE "licencia.txt"
+  !insertmacro MUI_PAGE_LICENSE "LICENSE"
   ;página donde se muestran las distintas secciones definidas
   ;!insertmacro MUI_PAGE_COMPONENTS
   ;página donde se selecciona el directorio donde instalar nuestra aplicacion
@@ -43,26 +42,21 @@ SetCompressor lzma
  
   !insertmacro MUI_LANGUAGE "Spanish"
 
-; Para generar instaladores en diferentes idiomas podemos escribir lo siguiente:
-;  !insertmacro MUI_LANGUAGE ${LANGUAGE}
-; De esta forma pasando la variable LANGUAGE al compilador podremos generar
-;paquetes en distintos idiomas sin cambiar el script
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Configuration General ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-;Nuestro instalador se llamara si la version fuera la 1.0: Ejemplo-1.0-win32.exe
+
+;Nombre del instalador
 OutFile OpenTumblr-${VERSION}-win32.exe
 
-;Aqui comprobamos que en la versión Inglesa se muestra correctamente el mensaje:
-;Welcome to the $Name Setup Wizard
 ;Al tener reservado un espacio fijo para este mensaje, y al ser
 ;la frase en español mas larga:
 ; Bienvenido al Asistente de Instalación de Aplicación $Name
 ; no se ve el contenido de la variable $Name si el tamaño es muy grande
 Name "OpenTumblr"
 Caption "OpenTumblr ${VERSION} para Win32 Setup"
-;Icon icono.ico
+;Icon images\opentumblr.ico
 
 ;Comprobacion de integridad del fichero activada
 CRCCheck on
@@ -73,72 +67,69 @@ XPStyle on
 	Declaracion de variables a usar
 	
 */
-# también comprobamos los distintos
-; tipos de comentarios que nos permite este lenguaje de script
 
 Var PATH
 Var PATH_ACCESO_DIRECTO
-;Indicamos cual sera el directorio por defecto donde instalaremos nuestra
-;aplicación, el usuario puede cambiar este valor en tiempo de ejecución.
+
+;Directorio defualt de instalacion
 InstallDir "$PROGRAMFILES\OpenTumblr"
 
-; check if the program has already been installed, if so, take this dir
-; as install dir
+;Revisa si la applicacion ya esta instalada, tomando el dir para install dir
 InstallDirRegKey HKLM SOFTWARE\OPENTUMBLR "Install_Dir"
-;Mensaje que mostraremos para indicarle al usuario que seleccione un directorio
+
+;Mensaje para seleccionar un directorio
 DirText "Elija un directorio donde instalar la aplicación:"
 
-;Indicamos que cuando la instalación se complete no se cierre el instalador automáticamente
+;Evitar el cierre del instalador al terminar
 AutoCloseWindow false
-;Mostramos todos los detalles del la instalación al usuario.
+
+;Detalles del la instalación.
 ShowInstDetails show
-;En caso de encontrarse los ficheros se sobreescriben
+
+;Sobreescritura de los archivos.
 SetOverwrite on
-;Optimizamos nuestro paquete en tiempo de compilación, es áltamente recomendable habilitar siempre esta opción
+
+;Optimizacion del instable tiempo de compilación.
 SetDatablockOptimize on
-;Habilitamos la compresión de nuestro instalador
+
+;Compresión delinstalador
 SetCompress auto
-;Personalizamos el mensaje de desinstalación
+
+;Mensaje de desinstalación
 UninstallText "Este es el desinstalador del OpenTumblr."
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Install settings                                                    ;
-; En esta sección añadimos los ficheros que forman nuestra aplicación ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;
+; Install settings ;
+;;;;;;;;;;;;;;;;;;;;
 
 Section "Programa"
-	;StrCpy $PATH "OPENTUMBLR"
+	StrCpy $PATH ""
 	StrCpy $PATH_ACCESO_DIRECTO "OpenTumblr-${VERSION}"
 
 	SetOutPath $INSTDIR\$PATH
 
-;Incluimos todos los ficheros que componen nuestra aplicación
+	;Archivos de la aplicacion a instalar
 	File  /r dist
+	File  LICENSE
 
-;Hacemos que la instalación se realice para todos los usuarios del sistema
+	;Instalación para todos los usuarios del sistema
         SetShellVarContext all
-;Creamos los directorios, acesos directos y claves del registro que queramos...
-	CreateDirectory "$SMPROGRAMS\$PATH_ACCESO_DIRECTO"
-	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\OpenTumblr-${VERSION}.lnk" \
-                       "$INSTDIR\dist\opentumblr-client.exe"
-	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\Licencia.lnk" \
-                       "$INSTDIR\licencia.html"
+	;SetShellVarContext current
 
-;Creamos también el aceso directo al instalador
+	;Creacion de directorios y acesos directos
+	CreateDirectory "$SMPROGRAMS\$PATH_ACCESO_DIRECTO"
+	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\OpenTumblr-${VERSION}.lnk"\
+                       "$INSTDIR\dist\opentumblr-client.exe"
+	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\LICENSE.lnk" \
+                       "$INSTDIR\LICENSE"
+
+	;Acceso directo al desinstalador
 	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\Desinstalar.lnk" \
                        "$INSTDIR\uninstall.exe"
 
-        WriteRegStr HKLM \
-            SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH \
-            "DisplayName" "OpenTumblr- ${VERSION} cliente multiplataforma para tumblr"
-        WriteRegStr HKLM \
-            SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$PATH \
-            "UninstallString" '"$INSTDIR\uninstall.exe"'
+	;Creacion del uninstall
 	WriteUninstaller "uninstall.exe"
-
-	WriteRegStr HKLM SOFTWARE\$PATH "InstallDir" $INSTDIR
-	WriteRegStr HKLM SOFTWARE\$PATH "Version" "${VERSION}"
 
 	Exec "explorer $SMPROGRAMS\$PATH_ACCESO_DIRECTO\"
 SectionEnd
@@ -148,14 +139,10 @@ SectionEnd
 ;;;;;;;;;;;;;;;;;;;;;;
 
 Section "Uninstall"
-	;StrCpy $PATH "OPENTUMBLR"
+	StrCpy $PATH ""
 	StrCpy $PATH_ACCESO_DIRECTO "OpenTumblr-${VERSION}"
         SetShellVarContext all
 	RMDir /r $SMPROGRAMS\$PATH_ACCESO_DIRECTO
 	RMDir /r $INSTDIR\$PATH
 	RMDir /r $INSTDIR
-	DeleteRegKey HKLM SOFTWARE\$PATH
-        DeleteRegKey HKLM \
-            Software\Microsoft\Windows\CurrentVersion\Uninstall\$PATH
 SectionEnd
-

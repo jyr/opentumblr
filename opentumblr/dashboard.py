@@ -33,7 +33,7 @@ class Dashboard(wx.Panel):
             if sys.platform == "win32":
                 self.path_images = os.path.abspath(os.path.dirname(__file__)) + '\\..\\images\\'
             else:
-                self.path_images = os.path.abspath(os.path.dirname(__file__)) + '/../images/'
+                self.path_images = os.path.abspath('images') + '/'
 
         self.p_botones = wx.Panel(self, -1)
         self.s_botones_staticbox = wx.StaticBox(self.p_botones, -1, "")

@@ -265,6 +265,7 @@ class Api:
 			req = Request(url, data)
 
 		newid = None
+		#print params
 		try: 
 			f = urlopen(req)
 			print f.read()

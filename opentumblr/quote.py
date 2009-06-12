@@ -43,6 +43,7 @@ class Quote(wx.Dialog):
         self.tc_url = wx.TextCtrl(self.p_options, -1, "/post/123456/")
 
         self.Bind(wx.EVT_BUTTON, self.OnCreateQuote, id = self.b_create.GetId())
+        self.Bind(wx.EVT_BUTTON, self.OnCancel, id = self.b_cancel.GetId())
 
         self.__set_properties()
         self.__do_layout()
@@ -138,6 +139,9 @@ class Quote(wx.Dialog):
     	except:
     		print "posteado en el blog primario"
     	self.Close()
+
+    def OnCancel(self, evt):
+        self.Close()
 
 if __name__ == "__main__":
     app = wx.PySimpleApp(0)

@@ -55,6 +55,7 @@ class Photo(wx.Dialog):
 
         self.Bind(wx.EVT_BUTTON, self.OnCreatePhoto, id = self.b_create.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnCancel, id = self.b_cancel.GetId())
+        self.Bind(wx.EVT_COMBOBOX, self.OnPublishingOptions, id = self.cb_publishing.GetId())
 
         self.__set_properties()
         self.__do_layout()
@@ -146,6 +147,30 @@ class Photo(wx.Dialog):
         # end wxGlade
 
 # end of class Photo
+    def OnPublishingOptions(self, evt):
+        if self.cb_publishing.GetValue() == "add to queue" or self.cb_publishing.GetValue() == "private":
+            self.l_date.Show(False)
+            self.tc_date.Show(False)
+            self.tc_tag.SetFocus()
+            
+        if self.cb_publishing.GetValue() == "publish now" or self.cb_publishing.GetValue() == "publish on...":
+            if self.cb_publishing.GetValue() == "publish on...":
+                self.l_date.SetLabel('Publish time:')
+                self.tc_date.SetValue('next tuesday, 10am')
+            else:
+                self.l_date.SetLabel('Date this post')
+                self.tc_date.SetValue('now')
+            
+            self.l_date.Show()
+            self.tc_date.Show()
+            self.tc_date.SetFocus()
+            
+        if self.cb_publishing.GetValue() == "save as draft":
+            self.l_date.SetLabel('Status message:')
+            self.tc_date.SetValue('')
+            self.tc_date.Show()
+            self.tc_date.SetFocus()
+            
     def OnCreatePhoto(self, evt):
     	self.source = self.tc_photourl.GetValue()
     	if not self.source:

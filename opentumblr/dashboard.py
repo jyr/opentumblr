@@ -105,32 +105,63 @@ class Dashboard(wx.Panel):
         # end wxGlade
 
 # end of class Dashboard
+    def OnPublishingOptions(self, evt):
+
+        self.pos = len(self.GetChildren()) - 1
+        self.cb_publishing = self.GetChildren()[self.pos].cb_publishing
+        self.l_date = self.GetChildren()[self.pos].l_date
+        self.tc_date = self.GetChildren()[self.pos].tc_date
+        self.tc_tag = self.GetChildren()[self.pos].tc_tag
+        
+        if self.cb_publishing.GetValue() == "add to queue" or self.cb_publishing.GetValue() == "private":
+            self.l_date.Show(False)
+            self.tc_date.Show(False)
+            self.tc_tag.SetFocus()
+            
+        if self.cb_publishing.GetValue() == "publish now" or self.cb_publishing.GetValue() == "publish on...":
+            if self.cb_publishing.GetValue() == "publish on...":
+                self.l_date.SetLabel('Publish time:')
+                self.tc_date.SetValue('next tuesday, 10am')
+            else:
+                self.l_date.SetLabel('Date this post')
+                self.tc_date.SetValue('now')
+            
+            self.l_date.Show()
+            self.tc_date.Show()
+            self.tc_date.SetFocus()
+            
+        if self.cb_publishing.GetValue() == "save as draft":
+            self.l_date.SetLabel('Status message:')
+            self.tc_date.SetValue('')
+            self.tc_date.Show()
+            self.tc_date.SetFocus()
+            
     def OnText(self, evt):
-    	self.text = Text(self, self.api)
+    	self.text = Text(self, -1)
     	self.text.Show()
 
     def	OnPhoto(self, evt):
-    	self.photo = Photo(self, self.api)
+    	self.photo = Photo(self, -1)
     	self.photo.Show()
 
     def OnQuote(self, evt):
-    	self.quote = Quote(self, self.api)
+    	self.quote = Quote(self, -1)
     	self.quote.Show()
 
     def OnLink(self, evt):
-    	self.link = Link(self, self.api)
+    	self.link = Link(self, -1)
     	self.link.Show()
 
     def OnChat(self, evt):
-    	self.chat = Chat(self, self.api)
+    	self.chat = Chat(self, -1)
     	self.chat.Show()
 
     def OnAudio(self, evt):
-    	self.audio = Audio(self, self.api)
+    	self.audio = Audio(self, -1)
     	self.audio.Show()
 
     def OnVideo(self, evt):
-    	self.video = Video(self, self.api)
+    	self.video = Video(self, -1)
     	self.video.Show()
 
     def OnLogout(self, evt):

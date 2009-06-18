@@ -14,11 +14,11 @@ except ImportError:
 
 
 class Link(wx.Dialog):
-    def __init__(self, *args, **kwds):
+    def __init__(self, parent, id):
         # begin wxGlade: Link.__init__
-        kwds["style"] = wx.DEFAULT_DIALOG_STYLE
-        wx.Dialog.__init__(self, args[0], **kwds)
-        self.api = args[1]
+        self.parent = parent
+        self.api = self.parent.api
+        wx.Dialog.__init__(self, parent, id, style = wx.DEFAULT_DIALOG_STYLE)
         self.panel = wx.Panel(self, -1)
         self.p_options = wx.Panel(self.panel, -1)
         self.p_link = wx.Panel(self.panel, -1)
@@ -46,7 +46,7 @@ class Link(wx.Dialog):
 
         self.Bind(wx.EVT_BUTTON, self.OnCreateLink, id = self.b_create.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnCancel, id = self.b_cancel.GetId())
-        self.Bind(wx.EVT_COMBOBOX, self.OnPublishingOptions, id = self.cb_publishing.GetId())
+        self.Bind(wx.EVT_COMBOBOX, self.GetParent().OnPublishingOptions, id = self.cb_publishing.GetId())
 
         self.__set_properties()
         self.__do_layout()
@@ -130,30 +130,6 @@ class Link(wx.Dialog):
         # end wxGlade
 
 # end of class Link
-    def OnPublishingOptions(self, evt):
-        if self.cb_publishing.GetValue() == "add to queue" or self.cb_publishing.GetValue() == "private":
-            self.l_date.Show(False)
-            self.tc_date.Show(False)
-            self.tc_tag.SetFocus()
-            
-        if self.cb_publishing.GetValue() == "publish now" or self.cb_publishing.GetValue() == "publish on...":
-            if self.cb_publishing.GetValue() == "publish on...":
-                self.l_date.SetLabel('Publish time:')
-                self.tc_date.SetValue('next tuesday, 10am')
-            else:
-                self.l_date.SetLabel('Date this post')
-                self.tc_date.SetValue('now')
-            
-            self.l_date.Show()
-            self.tc_date.Show()
-            self.tc_date.SetFocus()
-            
-        if self.cb_publishing.GetValue() == "save as draft":
-            self.l_date.SetLabel('Status message:')
-            self.tc_date.SetValue('')
-            self.tc_date.Show()
-            self.tc_date.SetFocus()
-            
     def OnCreateLink(self, evt):
     	self.name = self.tc_name.GetValue().encode('utf-8')
     	self.urllink = self.tc_urllink.GetValue()

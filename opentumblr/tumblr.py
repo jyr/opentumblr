@@ -86,11 +86,12 @@ class TumblrIterator:
 		return self.results['posts'][self.index-1]  
 
 class Api:
-	def __init__(self, name, email=None, password=None, date=None, tags=None, format=None):
+	def __init__(self, name, email=None, password=None, private=None, date=None, tags=None, format=None):
 		self.name = name
 		self.is_authenticated = False
 		self.email = email 
 		self.password = password
+		self.private = private
 		self.date = date
 		self.tags = tags
 		self.format = format
@@ -104,10 +105,12 @@ class Api:
 				'generator' : GENERATOR, 
 				'email': self.email, 
 				'password' : self.password,
+				'private' : self.private,
 				'group': self.name,
 				'date': self.date,
 				'tags': self.tags,
-				'format': self.format }
+				'format': self.format
+				}
 
 		data = urlencode(values)
 		req = Request(url, data)
@@ -241,6 +244,7 @@ class Api:
 		register_openers()
 		params['email'] = self.email
 		params['password'] = self.password
+		params['private'] = self.private
 		params['generator'] = GENERATOR
 		params['group'] = self.name
 		params['date'] = self.date
@@ -265,6 +269,7 @@ class Api:
 			req = Request(url, data)
 
 		newid = None
+		#print params
 		try: 
 			f = urlopen(req)
 			print f.read()

@@ -12,7 +12,7 @@ SetCompressor lzma
   !define mui_abortwarning
 
 ;Definimos variable VERSION
-!define VERSION "0.0.3"
+!define VERSION "0.0.4"
 
 
 ;--------------------------------

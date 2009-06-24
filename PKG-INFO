@@ -1,8 +1,8 @@
 Metadata-Version: 1.0
-Name: opentumblr
-Version: 0.0.1
+Name: opentumblr-client
+Version: 0.0.4
 Summary: Cliente de escritorio para tumblr
-Home-page: http://github.com/jyr/opentumblr
+Home-page: http://opentumblr.tumblr.com
 Author: Jair Gaxiola
 Author-email: jyr.gaxiola@gmail.com
 License: MIT LICENSE

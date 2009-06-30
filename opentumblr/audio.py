@@ -39,13 +39,23 @@ class Audio(wx.Dialog):
         self.b_cancel = wx.Button(self.p_audio, -1, "Cancel")
         self.b_options = wx.Button(self.p_options, -1, "Advanced  options")
         self.l_publishing = wx.StaticText(self.p_options, -1, "Publishing options")
-        self.cb_publishing = wx.ComboBox(self.p_options, -1, choices=["publish now", "add to queue", "publish on...", "save as draft", "private"], style=wx.CB_DROPDOWN)
+        
+        """
+        Not supported in the tumblr api at this time
+        self.cb_publishing = wx.ComboBox(self.p_options, -1, choices=["publish now", "add to queue", "publish on...", "save as draft", "private"], style=wx.CB_DROPDOWN)        
+        """
+        
+        self.cb_publishing = wx.ComboBox(self.p_options, -1, choices=["publish now", "publish on...", "save as draft"], style=wx.CB_DROPDOWN)
         self.l_date = wx.StaticText(self.p_options, -1, "Date this post")
         self.tc_date = wx.TextCtrl(self.p_options, -1, "")
         self.l_tag = wx.StaticText(self.p_options, -1, "Tag this post")
         self.tc_tag = wx.TextCtrl(self.p_options, -1, "", style=wx.TE_MULTILINE)
+
+        """"
+        Not supported in the tumlr api at this time
         self.l_url = wx.StaticText(self.p_options, -1, "Set a custom post URL")
         self.tc_url = wx.TextCtrl(self.p_options, -1, "/post/123456/")
+        """
 
         self.Bind(wx.EVT_BUTTON, self.OnCreateAudio, id = self.b_create.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnCancel, id = self.b_cancel.GetId())
@@ -81,10 +91,10 @@ class Audio(wx.Dialog):
         self.l_tag.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.tc_tag.SetMinSize((201, 80))
         self.tc_tag.SetBackgroundColour(wx.Colour(255, 255, 255))
-        self.l_url.SetBackgroundColour(wx.Colour(255, 255, 255))
-        self.tc_url.SetBackgroundColour(wx.Colour(221, 221, 221))
-        self.tc_url.SetForegroundColour(wx.Colour(192, 192, 192))
-        self.tc_url.SetFont(wx.Font(13, wx.DECORATIVE, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
+        #self.l_url.SetBackgroundColour(wx.Colour(255, 255, 255))
+        #self.tc_url.SetBackgroundColour(wx.Colour(221, 221, 221))
+        #self.tc_url.SetForegroundColour(wx.Colour(192, 192, 192))
+        #self.tc_url.SetFont(wx.Font(13, wx.DECORATIVE, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
         self.p_options.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.panel.SetBackgroundColour(wx.Colour(55, 85, 113))
         # end wxGlade
@@ -119,8 +129,8 @@ class Audio(wx.Dialog):
         s_options.Add(self.tc_date, 0, wx.ALL|wx.EXPAND, 5)
         s_options.Add(self.l_tag, 0, wx.ALL|wx.EXPAND, 5)
         s_options.Add(self.tc_tag, 0, wx.ALL|wx.EXPAND, 5)
-        s_options.Add(self.l_url, 0, wx.ALL|wx.EXPAND, 5)
-        s_options.Add(self.tc_url, 0, wx.ALL|wx.EXPAND, 5)
+        #s_options.Add(self.l_url, 0, wx.ALL|wx.EXPAND, 5)
+        #s_options.Add(self.tc_url, 0, wx.ALL|wx.EXPAND, 5)
         self.p_options.SetSizer(s_options)
         gs_audio.Add(self.p_options, 1, wx.ALL|wx.EXPAND, 20)
         self.panel.SetSizer(gs_audio)

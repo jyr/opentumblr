@@ -4,6 +4,8 @@
 
 import wx
 import string
+from message import Message
+
 try:
     from opentumblr.tumblr import Api
 except ImportError:
@@ -158,15 +160,16 @@ class Audio(wx.Dialog):
         else:
         	self.private = 0
 
-
-        #self.format = None
-        self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
-    	try:
-    		self.post = self.api.write_audio(self.data, self.source, self.caption)
-    	except:
-    		print "audio posteado en el blog primario"
-    	self.Close()
-
+        if self.data or self.source:
+            #self.format = None
+            self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
+            try:
+                self.post = self.api.write_audio(self.data, self.source, self.caption)
+            except:
+                print "audio posteado en el blog primario"
+                self.Close()
+        else:
+            Message('Audio File is required')
     def OnCancel(self, evt):
         self.Close()
 

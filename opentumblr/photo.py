@@ -4,6 +4,7 @@
 
 import wx
 import string
+from message import Message
 try:
     from opentumblr.tumblr import Api
 except ImportError:
@@ -183,16 +184,19 @@ class Photo(wx.Dialog):
         	self.private = 1
         else:
         	self.private = 0
-
-
-        #self.format = None
-        self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
-    	try:
-    		self.post = self.api.write_photo(self.source, self.data, self.caption, self.click)
-    	except:
-    		print "Posteado en el primario"
-    	self.Close()
-
+        	
+        
+        if self.source or self.data:
+            #self.format = None
+            self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
+            try:
+                self.post = self.api.write_photo(self.source, self.data, self.caption, self.click)
+            except:
+                print "Posteado en el primario"
+                self.Close()
+        else:
+            Message('Photo is required')
+            
     def OnCancel(self, evt):
         self.Close()
 

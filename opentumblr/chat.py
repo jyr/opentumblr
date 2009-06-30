@@ -4,6 +4,7 @@
 
 import wx
 import string
+from message import Message
 try:
     from opentumblr.tumblr import Api
 except ImportError:
@@ -156,15 +157,17 @@ class Chat(wx.Dialog):
         	self.private = 1
         else:
         	self.private = 0
-
-
-        #self.format = None
-        self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
-    	try:
-    		self.post = self.api.write_conversation(self.title, self.conversation)
-    	except:
-    		print "posteado en el blog primario"
-    	self.Close()
+        
+        if self.conversation:
+            #self.format = None
+            self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
+            try:
+                self.post = self.api.write_conversation(self.title, self.conversation)
+            except:
+                print "posteado en el blog primario"
+                self.Close()
+        else:
+            Message('Dialogue is required')
 
     def OnCancel(self, evt):
 	    self.Close()

@@ -4,6 +4,8 @@
 
 import wx
 import string
+from message import Message
+
 try:
     from opentumblr.tumblr import Api
 except ImportError:
@@ -157,16 +159,17 @@ class Link(wx.Dialog):
         	self.private = 1
         else:
         	self.private = 0
-
-
-        #self.format = None
-        self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
-    	try:
-    		self.post = self.api.write_link(self.name,self.urllink,self.description)
-    	except:
-    		print "posteado en el blog primario"
-    	self.Close()
-
+        
+        if self.urllink:
+            #self.format = None
+            self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
+            try:
+                self.post = self.api.write_link(self.name,self.urllink,self.description)
+            except:
+                print "posteado en el blog primario"
+                self.Close()
+        else:
+            Message('URL is required')
     def OnCancel(self, evt):
 	    self.Close()
 

@@ -4,6 +4,7 @@
 
 import wx
 import string
+from message import Message
 try:
     from opentumblr.tumblr import Api
 except ImportError:
@@ -146,15 +147,17 @@ class Quote(wx.Dialog):
         	self.private = 1
         else:
         	self.private = 0
-
-
-        #self.format = None
-        self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
-    	try:
-    		self.post = self.api.write_quote(self.quote, self.source)
-    	except:
-    		print "posteado en el blog primario"
-    	self.Close()
+        
+        if self.quote:
+            #self.format = None
+            self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
+            try:
+                self.post = self.api.write_quote(self.quote, self.source)
+            except:
+                print "posteado en el blog primario"
+                self.Close()
+        else:
+            Message('Quote is required')
 
     def OnCancel(self, evt):
         self.Close()

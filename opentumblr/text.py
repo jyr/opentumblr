@@ -4,6 +4,8 @@
 
 import wx
 import string
+from message import Message
+
 try:
     from opentumblr.tumblr import Api
 except ImportError:
@@ -154,17 +156,19 @@ class Text(wx.Dialog):
         #print self.cb_publishing.GetValue()
         if self.cb_publishing.GetValue() == 'add to queue':
             self.date = 'on.2'
-
-
-        #self.format = None
-        self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
-    	try:
-    		self.post = self.api.write_regular(self.title, self.body)
-    	except:
-    		print "Posteado en blog primario"	
-    	#print "Posteado en " % self.post
-    	#assert False,dir(self.post.values)
-    	self.Close()
+            
+        if self.body:
+            #self.format = None
+            self.api = Api(self.api.name, self.api.email, self.api.password, self.private, self.date, self.tags)
+            try:
+                self.post = self.api.write_regular(self.title, self.body)
+            except:
+                print "Posteado en blog primario"
+                #print "Posteado en " % self.post
+                #assert False,dir(self.post.values)
+                self.Close()
+        else:
+            Message("Post is required")
 
     def OnCancel(self, evt):
 	    self.Close()

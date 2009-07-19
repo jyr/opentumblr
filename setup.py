@@ -15,6 +15,7 @@ poster = packages_path + '/poster'
 simplejson = packages_path + '/simplejson'
 opentumblr = packages_path + '/opentumblr'
 opentumblr_client = opentumblr + '/opentumblr-client.py'
+tumblr = packages_path + '/tumblr.py'
 
 if sys.platform == "darwin":
 	"""
@@ -28,7 +29,10 @@ if sys.platform == "darwin":
 
 	APP = [opentumblr_client]
 	path_images = packages_path + '/images/'
-	image_files = [path_images+'audio.png',path_images+'chat.png',path_images+'link.png',path_images+'photo.png',path_images+'quote.png',path_images+'text.png',path_images+'video.png']
+	images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png']
+	for img in images:
+		image_files.append(path_images + img)
+
 	DATA_FILES = [('images',image_files)]
 	OPTIONS = {'argv_emulation': True}
 
@@ -59,9 +63,10 @@ else:
 		
 		opentumblr_client = opentumblr + '\\opentumblr-client.py'
 
-
 		path_images = packages_path + '\\images\\'
-		image_files = [path_images+'audio.png',path_images+'chat.png',path_images+'link.png',path_images+'photo.png',path_images+'quote.png',path_images+'text.png',path_images+'video.png']
+		images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png']
+		for img in images:
+			image_files.append(path_images + img)
 
 		setup(
 			windows=[opentumblr_client],
@@ -70,17 +75,36 @@ else:
 		)
 	else:
 		from distutils.core import setup
-		#from distutils.sysconfig import get_python_lib
+		
+		datafiles = []
+		image_files = []
+		doc_files = []
+		icon_files = []
 
-		ipath_docs = '/usr/share/doc/opentumblr/'
-		ipath_images = '/usr/share/pixmaps/opentumblr/'
+		prefix = sys.prefix + '/'
+
+		for arg in sys.argv:
+			if arg.startswith('--prefix='):
+				prefix = arg[9:]
+				prefix = os.path.expandvars(prefix)
+
+		ipath_docs = '%sshare/doc/opentumblr/' % prefix
+		ipath_images = '%sshare/pixmaps/opentumblr/' % prefix
 		ipath_dashboard = ipath_images+'dashboard/'
-		ipath_desktop = '/usr/share/applications/'
-
+		
 		path_images = packages_path + '/images/'
-		image_files = [path_images+'audio.png',path_images+'chat.png',path_images+'link.png',path_images+'photo.png',path_images+'quote.png',path_images+'text.png',path_images+'video.png']
-		doc_files =[packages_path + '/AUTHORS',packages_path + '/INSTALL',packages_path + '/LICENSE',packages_path + '/README',packages_path + '/THANKS']
-		icon_files = [path_images + 'opentumblr.png',path_images + 'opentumblr.xpm']
+		
+		images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png']
+		for img in images:
+			image_files.append(path_images + img)
+
+		docs = ['AUTHORS','INSTALL','LICENSE','README','THANKS']
+		for doc in docs:
+			doc_files.append(packages_path + '/' + doc)
+
+		icons = ['opentumblr.png','opentumblr.xpm']
+		for icon in icons:
+			icon_files.append(path_images + icon)
 
 		if not os.path.isdir(ipath_docs):
 			os.mkdir(ipath_docs)
@@ -88,6 +112,11 @@ else:
 		if not os.path.isdir(ipath_images):
 			os.mkdir(ipath_images)
 			os.mkdir(ipath_dashboard)
+		
+		datafiles.append(('share/pixmaps/', icon_files))
+		datafiles.append((ipath_docs, doc_files))
+		datafiles.append(('share/applications',[packages_path+'/opentumblr.desktop']))
+		datafiles.append((ipath_dashboard, image_files))
 
 		setup(
 			name=NAME,
@@ -99,6 +128,6 @@ else:
 	      	license=LICENSE,
 	      	scripts=[opentumblr_client],
 	      	packages=['opentumblr'],
-            package_dir = {'opentumblr': packages_path},
-	      	data_files=[('/usr/share/pixmaps/', icon_files),(ipath_dashboard, image_files),(ipath_docs, doc_files),(ipath_desktop,[packages_path+'/opentumblr.desktop'])]
+		packages_dir= {'opentumblr': packages_path},
+               	data_files= datafiles
 		)

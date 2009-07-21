@@ -18,6 +18,7 @@ opentumblr/quote.py
 opentumblr/text.py
 opentumblr/tumblr.py
 opentumblr/video.py
+opentumblr/message.py
 images/audio.png
 images/chat.png
 images/link.png

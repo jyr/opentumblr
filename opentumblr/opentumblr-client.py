@@ -6,15 +6,16 @@ import urllib2
 
 import wx
 try:
-    import opentumblr.tumblr
-    from opentumblr.tumblr import Api
-    from opentumblr.dashboard import Dashboard
-    from opentumblr.invalid import Invalid
-except ImportError:
     import tumblr
     from tumblr import Api
     from dashboard import Dashboard
     from invalid import Invalid
+except ImportError:
+    import opentumblr.tumblr
+    from opentumblr.tumblr import Api
+    from opentumblr.dashboard import Dashboard
+    from opentumblr.invalid import Invalid
+
 
 # begin wxGlade: extracode
 # end wxGlade

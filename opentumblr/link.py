@@ -49,7 +49,7 @@ class Link(wx.Dialog):
         self.cb_publishing = wx.ComboBox(self.p_options, -1, choices=["publish now", "add to queue", "publish on...", "save as draft", "private"], style=wx.CB_DROPDOWN)        
         """
         
-        self.cb_publishing = wx.ComboBox(self.p_options, -1, choices=["publish now", "publish on...", "save as draft"], style=wx.CB_DROPDOWN)
+        self.cb_publishing = wx.ComboBox(self.p_options, -1, choices=["publish now", "publish on...", "private"], style=wx.CB_DROPDOWN)
         self.l_date = wx.StaticText(self.p_options, -1, "Date this post")
         self.tc_date = wx.TextCtrl(self.p_options, -1, "")
         self.l_tag = wx.StaticText(self.p_options, -1, "Tag this post")
@@ -167,7 +167,7 @@ class Link(wx.Dialog):
                 self.post = self.api.write_link(self.name,self.urllink,self.description)
             except:
                 print "posteado en el blog primario"
-                self.Close()
+            self.Close()
         else:
             Message('URL is required')
     def OnCancel(self, evt):

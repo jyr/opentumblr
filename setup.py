@@ -10,7 +10,7 @@ URL = "http://opentumblr.tumblr.com"
 LICENSE = "MIT LICENSE"
 
 packages_path = os.path.abspath(os.path.dirname(__file__))
-
+print packages_path
 poster = packages_path + '/poster'
 simplejson = packages_path + '/simplejson'
 opentumblr = packages_path + '/opentumblr'
@@ -107,9 +107,14 @@ else:
 			icon_files.append(path_images + icon)
 
 		if not os.path.isdir(ipath_docs):
+			if not os.path.isdir(prefix + 'share'):
+				os.mkdir(prefix + 'share')
+				os.mkdir(prefix + 'share/doc')
 			os.mkdir(ipath_docs)
 
 		if not os.path.isdir(ipath_images):
+			if not os.path.isdir(prefix + 'share/pixmaps'):
+				os.mkdir(prefix + 'share/pixmaps')
 			os.mkdir(ipath_images)
 			os.mkdir(ipath_dashboard)
 		
@@ -128,6 +133,6 @@ else:
 	      	license=LICENSE,
 	      	scripts=[opentumblr_client],
 	      	packages=['opentumblr'],
-		packages_dir= {'opentumblr': packages_path},
-               	data_files= datafiles
+		    package_dir= {'opentumblr': opentumblr},
+            data_files= datafiles
 		)

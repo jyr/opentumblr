@@ -2,7 +2,7 @@ import sys
 import os
 
 NAME="opentumblr-client"
-VERSION = "0.0.4"
+VERSION = "0.0.5"
 DESCRIPTION = "Cliente de escritorio para tumblr"
 AUTHOR = "Jair Gaxiola"
 AUTHOR_EMAIL = "jyr.gaxiola@gmail.com"
@@ -16,6 +16,8 @@ simplejson = packages_path + '/simplejson'
 opentumblr = packages_path + '/opentumblr'
 opentumblr_client = opentumblr + '/opentumblr-client.py'
 tumblr = packages_path + '/tumblr.py'
+
+image_files = []
 
 if sys.platform == "darwin":
 	"""
@@ -77,7 +79,6 @@ else:
 		from distutils.core import setup
 		
 		datafiles = []
-		image_files = []
 		doc_files = []
 		icon_files = []
 

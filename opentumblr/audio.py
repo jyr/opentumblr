@@ -33,8 +33,13 @@ class Audio(wx.Dialog):
         self.l_addaudio = wx.StaticText(self.p_audio, -1, "Upload an Audio Post")
         self.l_audiofile = wx.StaticText(self.p_audio, -1, "Audio File")
         self.b_browse = filebrowse.FileBrowseButton(self.p_audio, -1, size=(703,-1))
+
+        """
+        Not supported in the tumblr api at this time
         self.l_audiofileurl = wx.StaticText(self.p_audio, -1, "Photo Url")
         self.tc_audiofileurl = wx.TextCtrl(self.p_audio, -1, "")
+        """
+        
         self.l_caption = wx.StaticText(self.p_audio, -1, "Caption (optional)")
         self.tc_caption = wx.TextCtrl(self.p_audio, -1, "", style=wx.TE_MULTILINE)
         self.b_create = wx.Button(self.p_audio, -1, "Create post")
@@ -54,7 +59,7 @@ class Audio(wx.Dialog):
         self.tc_tag = wx.TextCtrl(self.p_options, -1, "", style=wx.TE_MULTILINE)
 
         """"
-        Not supported in the tumlr api at this time
+        Not supported in the tumblr api at this time
         self.l_url = wx.StaticText(self.p_options, -1, "Set a custom post URL")
         self.tc_url = wx.TextCtrl(self.p_options, -1, "/post/123456/")
         """
@@ -75,10 +80,15 @@ class Audio(wx.Dialog):
         self.l_addaudio.SetFont(wx.Font(40, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_audiofile.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.l_audiofile.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        
+        """
+        Not supported in the tumblr api at this time
         self.l_audiofileurl.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.l_audiofileurl.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.tc_audiofileurl.SetMinSize((500, 25))
         self.tc_audiofileurl.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
+        """
+        
         self.l_caption.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.l_caption.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.tc_caption.SetMinSize((640, 200))
@@ -108,15 +118,25 @@ class Audio(wx.Dialog):
         s_options = wx.StaticBoxSizer(self.s_options_staticbox, wx.VERTICAL)
         s_audio = wx.StaticBoxSizer(self.s_audio_staticbox, wx.VERTICAL)
         s_buttons = wx.BoxSizer(wx.HORIZONTAL)
+
+        """
+        Not supported in the tumblr api at this time
         s_audiofileurl = wx.StaticBoxSizer(self.s_audiofileurl_staticbox, wx.HORIZONTAL)
+        """
+
         s_browse = wx.StaticBoxSizer(self.s_browse_staticbox, wx.HORIZONTAL)
         s_audio.Add(self.l_addaudio, 0, wx.ALL|wx.EXPAND, 2)
         s_audio.Add(self.l_audiofile, 0, wx.ALL|wx.EXPAND, 2)
         s_browse.Add(self.b_browse, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
         s_audio.Add(s_browse, 0, wx.EXPAND, 0)
+        
+        """
+        Not supported in the tumblr api at this time
         s_audiofileurl.Add(self.l_audiofileurl, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
         s_audiofileurl.Add(self.tc_audiofileurl, 0, wx.ALL|wx.EXPAND, 2)
         s_audio.Add(s_audiofileurl, 0, wx.EXPAND, 0)
+        """
+        
         s_audio.Add(self.l_caption, 0, wx.ALL|wx.EXPAND, 2)
         s_audio.Add(self.tc_caption, 0, wx.ALL|wx.EXPAND, 10)
         s_buttons.Add(self.b_create, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
@@ -147,9 +167,15 @@ class Audio(wx.Dialog):
     	self.data = self.b_browse.GetValue()
     	if not self.data:
     		self.data =None
+    	
+    	"""
+    	Not supported in the tumblr api at this time
     	self.source = self.tc_audiofileurl.GetValue()
     	if not self.source:
     		self.source = None
+    	"""
+    	self.source = None
+    	
     	self.caption = self.tc_caption.GetValue().encode('utf-8')
         self.tags = self.tc_tag.GetValue().encode('utf-8')
         self.tags = string.replace(self.tags,' ', ',')

@@ -39,6 +39,6 @@ class Audio(gui.CeFrame):
 		ret = gui.FileDialog.open()
 		self.label_ret_value.text = "Return value: %s" %ret 
 
-if __name__ == '__main__':
-	app = gui.Application(Audio())
-	app.run()
+#if __name__ == '__main__':
+#	app = gui.Application(Audio())
+#	app.run()

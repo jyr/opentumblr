@@ -1,7 +1,10 @@
 import ppygui as gui
 
+from tumblr import Api
+
 class Chat(gui.CeFrame):
-	def __init__(self):
+	def __init__(self, api):
+		self.api = api
 		gui.CeFrame.__init__(self, title="Opentumblr CE")
 		
 		self.l_chat = gui.Label(self, "Add a Chat Post", align = "center")
@@ -15,6 +18,9 @@ class Chat(gui.CeFrame):
 		
 		self.b_create = gui.Button(self, "Create Post")
 		self.b_cancel = gui.Button(self, "Cancel")
+		
+		self.b_create.bind(clicked = self.OnCreateChat)
+		self.b_cancel.bind(clicked = self.OnCancel)
 		
 		self.__set_properties()
 		self.__do_layout()
@@ -36,7 +42,24 @@ class Chat(gui.CeFrame):
 		s_chat.add(self.b_cancel)
 		
 		self.sizer = s_chat
+	
+	def OnCreateChat(self, evt):
+		self.title = self.tc_title.get_text()
+		self.conversation = self.tc_dialogue.get_text()
+		
+		if self.conversation:
+			self.api = Api(self.api.name, self.api.email, self.api.password)
+			try:
+				self.post = self.api.write_conversation(self.title, self.conversation)
+			except:
+				print "Posteado en el primario"
+			self.close()
+		else:
+			gui.Message.ok(title = 'Warning', caption = 'Dialogue is required')
+	
+	def OnCancel(self, evt):
+		self.close()
 
-if __name__ == '__main__':
-	app = gui.Application(Chat())
-	app.run()
+#if __name__ == '__main__':
+#	app = gui.Application(Chat())
+#	app.run()

@@ -1,7 +1,16 @@
 import ppygui as gui
 
+from text import Text
+from photo import Photo
+from quote import Quote
+from link import Link
+from chat import Chat
+from audio import Audio
+from video import Video
+
 class Dashboard(gui.CeFrame):
-	def __init__(self):
+	def __init__(self, api):
+		self.api = api
 		gui.CeFrame.__init__(self, title = "Opentumblr CE")
 		
 		self.l_dashboard = gui.Label(self, "Dashboard", align = "center")
@@ -14,6 +23,16 @@ class Dashboard(gui.CeFrame):
 		self.bmap_video = gui.Button(self, "Video")
 		
 		self.b_logout = gui.Button(self, "Logout")
+		
+		self.bmap_text.bind(clicked = self.OnText)
+		self.bmap_photo.bind(clicked = self.OnPhoto)
+		self.bmap_quote.bind(clicked = self.OnQuote)
+		self.bmap_link.bind(clicked = self.OnLink)
+		self.bmap_chat.bind(clicked = self.OnChat)
+		self.bmap_audio.bind(clicked = self.OnAudio)
+		self.bmap_video.bind(clicked = self.OnVideo)
+		
+		self.b_logout.bind(clicked = self.OnClose)
 		
 		self.__set_properties()
 		self.__do_layout()
@@ -34,8 +53,31 @@ class Dashboard(gui.CeFrame):
 		s_dashboard.add(self.b_logout)
 		
 		self.sizer = s_dashboard
-		
-if __name__ == '__main__':
-	app = gui.Application(Dashboard())
 	
-	app.run()
+	def OnText(self, evt):
+		Text(self.api)
+	
+	def OnPhoto(self, evt):
+		pass
+	
+	def OnQuote(self, evt):
+		Quote(self.api)
+	
+	def OnLink(self, evt):
+		Link(self.api)
+	
+	def OnChat(self, evt):
+		Chat(self.api)
+	
+	def OnAudio(self, evt):
+		pass
+	
+	def OnVideo(self, evt):
+		Video(self.api)
+	
+	def OnClose(self, evt):
+		self.close()
+
+#if __name__ == '__main__':
+#	app = gui.Application(Dashboard())	
+#	app.run()

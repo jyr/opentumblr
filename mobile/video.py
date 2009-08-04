@@ -1,7 +1,10 @@
 import ppygui as gui
 
+from tumblr import Api
+
 class Video(gui.CeFrame):
-	def __init__(self):
+	def __init__(self, api):
+		self.api = api
 		gui.CeFrame.__init__(self, title="Opentumblr CE")
 		
 		self.l_video = gui.Label(self, "Add a Video", align = "center")
@@ -12,6 +15,9 @@ class Video(gui.CeFrame):
 		
 		self.b_create = gui.Button(self, "Create Post")
 		self.b_cancel = gui.Button(self, "Cancel")
+		
+		self.b_create.bind(clicked = self.OnCreateVideo)
+		self.b_cancel.bind(clicked = self.OnCancel)
 		
 		self.__set_properties()
 		self.__do_layout()
@@ -30,11 +36,24 @@ class Video(gui.CeFrame):
 		s_video.add(self.b_cancel)
 		
 		self.sizer = s_video
+	
+	def OnCreateVideo(self, evt):
+		self.embed = self.tc_embed.get_text()
+		self.caption = self.tc_caption.get_text()
 		
-	def OnOpen(self, evt):
-		ret = gui.FileDialog.open()
-		self.label_ret_value.text = "Return value: %s" %ret 
+		if self.embed:
+			self.api = Api(self.api.name, self.api.email, self.api.password)
+			try:
+				self.post = self.api.write_video(self.embed, self.caption)
+			except:
+				print "Posteado en el primario"
+			self.close()
+		else:
+			gui.Message.ok(title = 'Warning', caption = 'Embed a video is required')
+	
+	def OnCancel(self, evt):
+		self.close()
 
-if __name__ == '__main__':
-	app = gui.Application(Video())
-	app.run()
+#if __name__ == '__main__':
+#	app = gui.Application(Video())
+#	app.run()

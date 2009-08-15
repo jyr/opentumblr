@@ -50,11 +50,11 @@ class Dashboard(wx.Frame):
     def __set_properties(self):
         # begin wxGlade: Dashboard.__set_properties
         self.SetTitle("Opentumblr")
-        self.SetSize((333, 600))
-        self.toolbar_dashboard.SetToolBitmapSize((26, 25))
-        self.toolbar_dashboard.SetToolPacking(1)
-        self.toolbar_dashboard.Realize()
-        self.panel.SetMinSize((333, 543))
+        self.SetSize((290, 570))
+        #self.toolbar_dashboard.SetToolBitmapSize((26, 25))
+        #self.toolbar_dashboard.SetToolPacking(1)
+        #self.toolbar_dashboard.Realize()
+        self.panel.SetMinSize((290, 570))
         # end wxGlade
 
     def __do_layout(self):
@@ -101,7 +101,7 @@ class ToolBarDashboard(wx.ToolBar):
     def __init__(self, parent, id):
         # begin wxGlade: ToolBarDashboard.__init__
         #kwds["style"] = wx.TB_TEXT
-        wx.ToolBar.__init__(self, parent, id)
+        wx.ToolBar.__init__(self, parent, id, style=wx.TB_HORIZONTAL|wx.TB_TEXT)
         self.path_images = '/usr/share/pixmaps/opentumblr/dashboard/'
         
         if not os.path.isdir(self.path_images):
@@ -126,7 +126,7 @@ class ToolBarDashboard(wx.ToolBar):
 
     def __set_properties(self):
         # begin wxGlade: ToolBarDashboard.__set_properties
-        self.SetToolBitmapSize((26, 25))
+        self.SetToolBitmapSize((16, 15))
         self.SetToolPacking(1)
         self.Realize()
         # end wxGlade

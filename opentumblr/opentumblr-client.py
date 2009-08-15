@@ -44,7 +44,7 @@ class Login(wx.Frame):
     def __set_properties(self):
         # begin wxGlade: Login.__set_properties
         self.SetTitle("Opentumblr")
-        self.SetSize((333, 600))
+        self.SetSize((290, 570))
         self.l_tumblr.SetFont(wx.Font(40, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         # end wxGlade
 

@@ -58,7 +58,7 @@ class Audio(wx.Panel):
         """
         
         self.l_caption.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        self.tc_caption.SetMinSize((286, 210))
+        self.tc_caption.SetMinSize((250, 222))
         # end wxGlade
 
     def __do_layout(self):
@@ -80,10 +80,10 @@ class Audio(wx.Panel):
         """
         
         s_audio.Add(self.l_caption, 0, wx.ALL, 2)
-        s_audio.Add(self.tc_caption, 0, wx.ALL|wx.EXPAND, 10)
-        s_buttons.Add(self.b_create, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
-        s_buttons.Add(self.b_cancel, 0, wx.LEFT|wx.EXPAND|wx.ALIGN_CENTER_VERTICAL, 135)
-        s_audio.Add(s_buttons, 0, wx.ALL, 2)
+        s_audio.Add(self.tc_caption, 0, wx.ALL|wx.EXPAND, 2)
+        s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
+        s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
+        s_audio.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)
         self.SetSizer(s_audio)
         s_audio.Fit(self)
         # end wxGlade

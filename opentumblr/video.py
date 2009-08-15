@@ -46,9 +46,9 @@ class Video(wx.Panel):
         self.l_embed.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.label_1.SetForegroundColour(wx.Colour(35, 142, 107))
         self.label_1.SetFont(wx.Font(9, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
-        self.tc_embed.SetMinSize((280, 100))
+        self.tc_embed.SetMinSize((250, 117))
         self.l_caption.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        self.tc_caption.SetMinSize((280, 130))
+        self.tc_caption.SetMinSize((250, 118))
         # end wxGlade
 
     def __do_layout(self):
@@ -58,11 +58,11 @@ class Video(wx.Panel):
         s_video.Add(self.l_addvideo, 0, wx.ALL, 2)
         s_video.Add(self.l_embed, 0, wx.ALL, 2)
         s_video.Add(self.label_1, 0, wx.ALL, 2)
-        s_video.Add(self.tc_embed, 0, wx.ALL|wx.EXPAND, 10)
+        s_video.Add(self.tc_embed, 0, wx.ALL|wx.EXPAND, 2)
         s_video.Add(self.l_caption, 0, wx.ALL, 2)
-        s_video.Add(self.tc_caption, 0, wx.ALL|wx.EXPAND, 10)
-        s_buttons.Add(self.b_create, 0, wx.ALL|wx.EXPAND, 2)
-        s_buttons.Add(self.b_cancel, 0, wx.LEFT|wx.EXPAND|wx.ALIGN_CENTER_VERTICAL, 135)
+        s_video.Add(self.tc_caption, 0, wx.ALL|wx.EXPAND, 2)
+        s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
+        s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
         s_video.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)
         self.SetSizer(s_video)
         s_video.Fit(self)

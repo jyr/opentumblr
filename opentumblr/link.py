@@ -47,7 +47,7 @@ class Link(wx.Panel):
         self.tc_name.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.l_urllink.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
         self.l_description.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
-        self.tc_description.SetMinSize((292, 250))
+        self.tc_description.SetMinSize((245, 203))
         self.tc_description.SetBackgroundColour(wx.Colour(255, 255, 255))
         # end wxGlade
 
@@ -62,9 +62,9 @@ class Link(wx.Panel):
         s_link.Add(self.tc_urllink, 0, wx.ALL|wx.EXPAND, 2)
         s_link.Add(self.l_description, 0, wx.ALL, 2)
         s_link.Add(self.tc_description, 0, wx.ALL|wx.EXPAND, 2)
-        s_buttons.Add(self.b_create, 0, wx.ALL|wx.EXPAND|wx.ALIGN_CENTER_VERTICAL, 2)
-        s_buttons.Add(self.b_cancel, 0, wx.LEFT|wx.ALIGN_CENTER_VERTICAL, 140)
-        s_link.Add(s_buttons, 0, wx.EXPAND, 0)
+        s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
+        s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
+        s_link.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)
         self.SetSizer(s_link)
         s_link.Fit(self)
         # end wxGlade

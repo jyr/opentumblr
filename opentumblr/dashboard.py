@@ -24,7 +24,6 @@ class Dashboard(wx.Frame):
         wx.Frame.__init__(self, parent, id)
         self.parent = parent
         self.api = api
-        
         # Tool Bar
         self.toolbar_dashboard = ToolBarDashboard(self, -1)
         self.SetToolBar(self.toolbar_dashboard)
@@ -33,7 +32,7 @@ class Dashboard(wx.Frame):
         self.b_twitter = wx.Button(self, -1, "Twitter")
         self.b_filesocial = wx.Button(self, -1, "FileSocial")
         self.b_logout = wx.Button(self, -1, "Logout")
-        
+        self.Move((20,30))
         self.Bind(wx.EVT_TOOL, self.SelectPanel, id = ID_TEXT)
         self.Bind(wx.EVT_TOOL, self.SelectPanel, id = ID_PHOTO)
         self.Bind(wx.EVT_TOOL, self.SelectPanel, id = ID_QUOTE)
@@ -137,7 +136,36 @@ class ToolBarDashboard(wx.ToolBar):
         # end wxGlade
 
 # end of class ToolBarDashboard
+    def OnPublishingOptions(self, evt):
 
+        self.pos = len(self.GetChildren()) - 1
+        self.cb_publishing = self.GetChildren()[self.pos].cb_publishing
+        self.l_date = self.GetChildren()[self.pos].l_date
+        self.tc_date = self.GetChildren()[self.pos].tc_date
+        self.tc_tag = self.GetChildren()[self.pos].tc_tag
+        
+        if self.cb_publishing.GetValue() == "add to queue" or self.cb_publishing.GetValue() == "private":
+            self.l_date.Show(False)
+            self.tc_date.Show(False)
+            self.tc_tag.SetFocus()
+            
+        if self.cb_publishing.GetValue() == "publish now" or self.cb_publishing.GetValue() == "publish on...":
+            if self.cb_publishing.GetValue() == "publish on...":
+                self.l_date.SetLabel('Publish time:')
+                self.tc_date.SetValue('next tuesday, 10am')
+            else:
+                self.l_date.SetLabel('Date this post')
+                self.tc_date.SetValue('now')
+            
+            self.l_date.Show()
+            self.tc_date.Show()
+            self.tc_date.SetFocus()
+            
+        if self.cb_publishing.GetValue() == "save as draft":
+            self.l_date.SetLabel('Status message:')
+            self.tc_date.SetValue('')
+            self.tc_date.Show()
+            self.tc_date.SetFocus()
 
 if __name__ == "__main__":
     app = wx.PySimpleApp(0)

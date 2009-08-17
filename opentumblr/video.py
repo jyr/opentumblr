@@ -92,9 +92,10 @@ class Video(wx.Panel):
                 self.post = self.api.write_video(self.embed, self.caption)
             except:
                 print "posteado en el blog primario"
-            self.Close()
+            self.OnCancel(self)
         else:
             Message('Embed a video is required')
             
     def OnCancel(self, evt):
-	    self.Close()
+	    """ Sirve para cancel y cerrar la opcion de text """
+	    self.parent.SetPanel(None)

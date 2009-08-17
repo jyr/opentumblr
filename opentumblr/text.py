@@ -11,7 +11,6 @@ try:
 except ImportError:
     from tumblr import Api
 
-
 class Text(wx.Panel):
     def __init__(self, parent, id):
         wx.Panel.__init__(self, parent, id)
@@ -20,7 +19,7 @@ class Text(wx.Panel):
         self.tags = None
         self.date = None
         self.private = 0
-        
+
         self.s_text_staticbox = wx.StaticBox(self, -1, "")
         self.b_options = wx.Button(self, -1, "Advanced  options")
         self.l_text = wx.StaticText(self, -1, "Add a Text Post")
@@ -87,9 +86,10 @@ class Text(wx.Panel):
                 self.post = self.api.write_regular(self.title, self.body)
             except:
                 print "Posteado en blog primario"
-            self.Close()
+            self.OnCancel(self)
         else:
             Message("Post is required")
 
     def OnCancel(self, evt):
-	    self.Close()
+        """ Sirve para cancel y cerrar la opcion de text """
+        self.parent.SetPanel(None)

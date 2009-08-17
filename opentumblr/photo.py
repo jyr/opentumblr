@@ -118,9 +118,10 @@ class Photo(wx.Panel):
                 self.post = self.api.write_photo(self.source, self.data, self.caption, self.click)
             except:
                 print "Posteado en el primario"
-            self.Close()
+            self.OnCancel(self)
         else:
             Message('Photo is required')
             
     def OnCancel(self, evt):
-        self.Close()
+        """ Sirve para cancel y cerrar la opcion de text """
+        self.parent.SetPanel(None)

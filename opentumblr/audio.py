@@ -125,9 +125,10 @@ class Audio(wx.Panel):
                 self.post = self.api.write_audio(self.data, self.source, self.caption)
             except:
                 print "audio posteado en el blog primario"
-            self.Close()
+            self.OnCancel(self)
         else:
             Message('Audio File is required')
 
     def OnCancel(self, evt):
-        self.Close()
+        """ Sirve para cancel y cerrar la opcion de text """
+        self.parent.SetPanel(None)

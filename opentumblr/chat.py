@@ -98,9 +98,10 @@ class Chat(wx.Panel):
                 self.post = self.api.write_conversation(self.title, self.conversation)
             except:
                 print "posteado en el blog primario"
-            self.Close()
+            self.OnCancel(self)
         else:
             Message('Dialogue is required')
 
     def OnCancel(self, evt):
-	    self.Close()
+	    """ Sirve para cancel y cerrar la opcion de text """
+	    self.parent.SetPanel(None)

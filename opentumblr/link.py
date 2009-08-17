@@ -94,9 +94,10 @@ class Link(wx.Panel):
                 self.post = self.api.write_link(self.name,self.urllink,self.description)
             except:
                 print "posteado en el blog primario"
-            self.Close()
+            self.OnCancel(self)
         else:
             Message('URL is required')
     
     def OnCancel(self, evt):
-	    self.Close()
+	    """ Sirve para cancel y cerrar la opcion de text """
+	    self.parent.SetPanel(None)

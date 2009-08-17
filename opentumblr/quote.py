@@ -87,9 +87,10 @@ class Quote(wx.Panel):
                 self.post = self.api.write_quote(self.quote, self.source)
             except:
                 print "posteado en el blog primario"
-            self.Close()
+            self.OnCancel(self)
         else:
             Message('Quote is required')
 
     def OnCancel(self, evt):
-        self.Close()
+        """ Sirve para cancel y cerrar la opcion de text """
+        self.parent.SetPanel(None)

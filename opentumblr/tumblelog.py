@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-# -*- coding: us-ascii -*-
 
 import wx
+import  wx.lib.scrolledpanel as scrolled
+import wx.html as html
 
 from text import Text
 from photo import Photo
@@ -64,8 +65,73 @@ class TumbleLog(wx.Panel):
         else:
             pass
 
-class MyTumbleLog(wx.Panel):
+class MyTumbleLog(scrolled.ScrolledPanel):
     def __init__(self, parent, id):
-        wx.Panel.__init__(self, parent, id)
-        self.l_text = wx.StaticText(self, -1, "Dashboard")
+        scrolled.ScrolledPanel.__init__(self, parent, id)
+        self.parent = parent
+        self.api = self.parent.api
+        self.html1 = html.HtmlWindow(self, id, size=(280,570), pos = (5,70))
+        
+        self.l_tumblelog = wx.StaticText(self, -1, "Tumble Log")
+        self.label_1 = wx.StaticText(self, -1, "label_1")
+        
+        self.__get_mytumblelog()
+        self.__set_properties()
+        self.__do_layout()
 
+    def __set_properties(self):
+        self.SetBackgroundColour(wx.Colour(100, 100, 100))
+        self.l_tumblelog.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+        self.label_1.SetMinSize((314, 254))
+
+    def __do_layout(self):
+        s_mytumblelog = wx.BoxSizer(wx.VERTICAL)
+        s_mytumblelog.Add(self.l_tumblelog, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
+        s_mytumblelog.Add(self.label_1, 1, wx.ALL|wx.EXPAND, 5)
+        self.SetSizer(s_mytumblelog)
+        self.SetupScrolling()
+        s_mytumblelog.Fit(self)
+    
+    def __get_mytumblelog(self):
+        html = ''
+        self.title = []
+        self.body = []
+
+        self.html1.SetStandardFonts()
+        
+        lists = self.api.read(start = 0, max = 10)
+        for post in lists:
+            #print post
+            if post['type'] == 'regular':
+                self.title = '<p bgcolor=\'#fff\'><br /><b>' + post['regular-title'] + '</b><br />'
+                body = self.title + post['regular-body'] + '<br />' + post['date'] + '</p><br />'
+                self.body.append(body)
+            if post['type'] == 'photo':
+                self.title = '<p background=\'#000\'><br /><br />'
+                body = self.title + post['photo-url-250'] + '<br />' + post['date'] + '</p><br />'
+                self.body.append(body)
+            if post['type'] == 'conversation':
+                self.title = '<p bgcolor=\'#fff\'><br /><b>' + post['conversation-title'] + '</b><br />'
+                body = self.title + post['conversation-text'] + '<br />' + post['date'] + '</p><br />'
+                self.body.append(body)
+            if post['type'] == 'link':
+                self.title = '<p bgcolor=\'#fff\'><br /><b>' + post['link-text'] + '</b><br />'
+                body = self.title + post['link-url'] + '<br />' + post['date'] + '</p<br />'
+                self.body.append(body)
+            if post['type'] == 'quote':
+                self.title = '<p bgcolor=\'#fff\'><br /><br />'
+                body = self.title + post['quote-text'] + '<br />' + post['date'] + '</p><br />'
+                self.body.append(body)
+            if post['type'] == 'audio':
+                self.title = '<p bgcolor=\'#fff\'><br /><br />'
+                body = self.title + post['audio-player'] + '<br />' + post['date'] + '</p><br />'
+                self.body.append(body)
+            if post['type'] == 'video':
+                self.title = '<p bgcolor=\'#fff\'><br /><br />'
+                body = self.title + post['video-player'] + '<br />' + post['date'] + '</p><br />'
+                self.body.append(body)
+
+        for value in self.body:
+            html += value + '<br />'
+
+        self.html1.SetPage(html)

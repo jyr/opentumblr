@@ -45,7 +45,7 @@ class Dashboard(wx.Frame):
     def __set_properties(self):
         self.SetTitle("Opentumblr")
         self.SetSize((290, 570))
-        self.panel.SetMinSize((290, 570))
+        self.panel.SetMinSize((290, 520))
 
     def __do_layout(self):
         s_dashboard = wx.BoxSizer(wx.VERTICAL)

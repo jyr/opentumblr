@@ -25,6 +25,7 @@ class Dashboard(wx.Frame):
         self.SetToolBar(self.toolbar_dashboard)
         # Tool Bar end
         self.panel = TumbleLog(self, -1)
+        #self.panel = wx.Panel(self, -1)
         self.b_twitter = wx.Button(self, -1, "Twitter")
         self.b_filesocial = wx.Button(self, -1, "FileSocial")
         self.b_logout = wx.Button(self, -1, "Logout")

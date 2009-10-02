@@ -21,7 +21,7 @@
 __author__ = 'ryan.a.cox@gmail.com'
 __version__ = '0.1'
 
-
+from httplib import HTTPConnection
 from urllib2 import Request, urlopen, URLError, HTTPError
 from urllib import urlencode, quote
 from poster.encode import multipart_encode
@@ -128,6 +128,44 @@ class Api:
 		except Exception, e:
 			raise TumblrError(str(e))
 
+	def dashboard(self):
+	    self.domain = 'http://www.tumblr.com'
+	    self.url = self.domain + '/login'
+	    self.params = urlencode({'email':self.email, 'password': self.password})
+	    self.headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
+	    self.response = self._getcookie(self.domain, self.url, self.headers, self.params)
+	    
+	    self.cookie = self._cookie(self.response)
+	    
+	    self.response = self._getcookie(self.domain, self.url, self.headers, self.params, self.cookie)
+	    self.url_iphone = 'http://www.tumblr.com/iphone'
+	    self.data = self._getcookie(self.domain, self.url_iphone, self.headers, self.params, self.cookie)
+	    #print self.data.read()
+	    return self.data.read()
+	    
+	def _cookie(self, response):
+	    self.cookie = response.getheader('set-cookie')
+
+	    self.pfu = self.cookie[self.cookie.find('pfu'):self.cookie.find(' ')]
+	    self.pfp = self.cookie[self.cookie.find('pfp'):]
+	    self.pfp = self.pfp[:self.pfp.find(' ')]
+	    self.pfe = self.cookie[self.cookie.find('pfe'):]
+	    self.pfe = self.pfe[:self.pfe.find(' ')]
+	    self.cookie = self.pfu + self.pfp + self.pfe
+	    
+	    return self.cookie
+	    
+
+	def _getcookie(self, domain, url, headers, params = None, cookie = None):
+	    self.session = HTTPConnection(domain, '80')
+	    if cookie:
+	        headers['Cookie'] = cookie
+    	    #headers['Referer'] = 'http://www.tumblr.com/iphone'
+	    self.session.request('POST',url, params, headers)
+	        
+	    self.response = self.session.getresponse()
+	    #print self.response.status, self.response.reason
+	    return self.response	    
 
 	def write_regular(self, title=None, body=None, **args): 
 		if title:

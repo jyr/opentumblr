@@ -75,7 +75,8 @@ class MyTumbleLog(scrolled.ScrolledPanel):
         self.l_tumblelog = wx.StaticText(self, -1, "Tumble Log")
         self.label_1 = wx.StaticText(self, -1, "label_1")
         
-        self.__get_mytumblelog()
+        #self.__get_mytumblelog()
+        self.__get_dashboard()
         self.__set_properties()
         self.__do_layout()
 
@@ -99,7 +100,8 @@ class MyTumbleLog(scrolled.ScrolledPanel):
 
         self.html1.SetStandardFonts()
         
-        lists = self.api.read(start = 0, max = 10)
+        lists = self.api.read(start = 0, max = 5)
+        #assert False,lists
         for post in lists:
             #print post
             if post['type'] == 'regular':
@@ -135,3 +137,9 @@ class MyTumbleLog(scrolled.ScrolledPanel):
             html += value + '<br />'
 
         self.html1.SetPage(html)
+    
+    def __get_dashboard(self):
+        self.html1.SetStandardFonts()
+        
+        lists = self.api.dashboard()
+        self.html1.SetPage(lists)

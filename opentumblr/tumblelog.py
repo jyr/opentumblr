@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+# -*- coding: us-ascii -*-
 
 import wx
-import  wx.lib.scrolledpanel as scrolled
-import wx.html as html
+#import  wx.lib.scrolledpanel as scrolled
+#import wx.html as html
 
 from text import Text
 from photo import Photo
@@ -14,21 +15,32 @@ from video import Video
 
 class TumbleLog(wx.Panel):
     def __init__(self, parent, id):
-        wx.Panel.__init__(self, parent, id)
-        self.parent = parent
-        self.api = self.parent.api
-        
-        self.panel = wx.Panel(self, -1)
+	    wx.Panel.__init__(self, parent, id)
+	    self.parent = parent
+	    self.api = self.parent.api
+	    self.panel = wx.Panel(self, -1)
+	    self.bitmap_1 = wx.StaticBitmap(self.panel, -1, wx.Bitmap("/Users/jyr/Desarrollo/git-projects/opentumblr/images/opentumblr.png", wx.BITMAP_TYPE_ANY))
+	    self.__set_properties()
+	    self.__do_layout()
 
-        self.__set_properties()
-        self.__do_layout()
+	    def __set_properties(self):
+	        self.SetSize((310, 462))
+
+	    def __do_layout(self):
+	        self.s_tumblelog = wx.BoxSizer(wx.VERTICAL)
+	        self.s_tumblelog.Add(self.panel, 1, wx.EXPAND, 0)
+	        self.SetSizer(self.s_tumblelog)
 
     def __set_properties(self):
         self.SetSize((310, 462))
+        self.SetBackgroundColour(wx.Colour(47, 47, 47))
 
     def __do_layout(self):
         self.s_tumblelog = wx.BoxSizer(wx.VERTICAL)
         self.s_tumblelog.Add(self.panel, 1, wx.EXPAND, 0)
+        sizer_1 = wx.BoxSizer(wx.VERTICAL)
+        sizer_1.Add(self.bitmap_1, 0, wx.TOP|wx.ALIGN_CENTER_HORIZONTAL, 150)
+        self.panel.SetSizer(sizer_1)
         self.SetSizer(self.s_tumblelog)
 
     def SwitchPanel(self, newpanel):
@@ -59,17 +71,18 @@ class TumbleLog(wx.Panel):
         elif paneltype == "VIDEO":
             newpanel = Video(self, -1)
             self.SwitchPanel(newpanel)
-        elif not paneltype:
-            newpanel = MyTumbleLog(self, -1)
-            self.SwitchPanel(newpanel)
+#        elif not paneltype:
+#            newpanel = MyTumbleLog(self, -1)
+#            self.SwitchPanel(newpanel)
         else:
             pass
 
+"""
 class MyTumbleLog(scrolled.ScrolledPanel):
     def __init__(self, parent, id):
         scrolled.ScrolledPanel.__init__(self, parent, id)
         self.parent = parent
-        self.api = self.parent.api
+        #self.api = self.parent.api
         self.html1 = html.HtmlWindow(self, id, size=(280,570), pos = (5,70))
         
         self.l_tumblelog = wx.StaticText(self, -1, "Tumble Log")
@@ -143,3 +156,4 @@ class MyTumbleLog(scrolled.ScrolledPanel):
         
         lists = self.api.dashboard()
         self.html1.SetPage(lists)
+"""

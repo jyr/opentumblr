@@ -19,16 +19,17 @@ class Quote(wx.Panel):
         self.tags = None
         self.date = None
         self.private = 0
-        
-        self.s_quote_staticbox = wx.StaticBox(self, -1, "")
-        self.b_options = wx.Button(self, -1, "Advanced  options")
-        self.l_addquote = wx.StaticText(self, -1, "Add a Quote")
-        self.l_quote = wx.StaticText(self, -1, "Quote")
-        self.tc_quote = wx.TextCtrl(self, -1, "")
-        self.l_source = wx.StaticText(self, -1, "Source ( optional )")
-        self.tc_source = wx.TextCtrl(self, -1, "")
-        self.b_create = wx.Button(self, -1, "Create post")
-        self.b_cancel = wx.Button(self, -1, "Cancel")
+
+        self.p_main = wx.Panel(self, -1)
+        self.s_quote_staticbox = wx.StaticBox(self.p_main, -1, "")
+        self.b_options = wx.Button(self.p_main, -1, "Advanced  options")
+        self.l_addquote = wx.StaticText(self.p_main, -1, "Add a Quote")
+        self.l_quote = wx.StaticText(self.p_main, -1, "Quote")
+        self.tc_quote = wx.TextCtrl(self.p_main, -1, "")
+        self.l_source = wx.StaticText(self.p_main, -1, "Source ( optional )")
+        self.tc_source = wx.TextCtrl(self.p_main, -1, "")
+        self.b_create = wx.Button(self.p_main, -1, "Create post")
+        self.b_cancel = wx.Button(self.p_main, -1, "Cancel")
         
         self.Bind(wx.EVT_BUTTON, self.AdvancedOptions, id = self.b_options.GetId())
         self.Bind(wx.EVT_BUTTON, self.OnCreateQuote, id = self.b_create.GetId())
@@ -43,21 +44,27 @@ class Quote(wx.Panel):
         self.tc_quote.SetMinSize((250, 130))
         self.l_source.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.tc_source.SetMinSize((250, 130))
+        self.p_main.SetBackgroundColour(wx.Colour(255, 255, 255))
 
     def __do_layout(self):
-        s_quote = wx.StaticBoxSizer(self.s_quote_staticbox, wx.VERTICAL)
-        s_buttons = wx.BoxSizer(wx.HORIZONTAL)
-        s_quote.Add(self.b_options, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 2)
-        s_quote.Add(self.l_addquote, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
-        s_quote.Add(self.l_quote, 0, wx.ALL, 2)
-        s_quote.Add(self.tc_quote, 0, wx.ALL|wx.EXPAND, 5)
-        s_quote.Add(self.l_source, 0, wx.ALL, 2)
-        s_quote.Add(self.tc_source, 0, wx.ALL|wx.EXPAND, 5)
-        s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
-        s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
-        s_quote.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)
-        self.SetSizer(s_quote)
-        s_quote.Fit(self)
+	    s_main = wx.BoxSizer(wx.VERTICAL)
+	    s_quote = wx.StaticBoxSizer(self.s_quote_staticbox, wx.VERTICAL)
+	    s_buttons = wx.BoxSizer(wx.HORIZONTAL)
+	    s_quote.Add(self.b_options, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 2)
+	    s_quote.Add(self.l_addquote, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
+	    s_quote.Add(self.l_quote, 0, wx.ALL, 2)
+	    s_quote.Add(self.tc_quote, 0, wx.ALL|wx.EXPAND, 5)
+	    s_quote.Add(self.l_source, 0, wx.ALL, 2)
+	    s_quote.Add(self.tc_source, 0, wx.ALL|wx.EXPAND, 5)
+	    s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
+	    s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
+	    s_quote.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)
+	    self.p_main.SetSizer(s_quote)
+	    s_main.Add(self.p_main, 1, wx.ALL|wx.EXPAND, 10)
+	    self.SetSizer(s_main)
+	    s_main.Fit(self)
+        #self.SetSizer(s_quote)
+        #s_quote.Fit(self)
         # end wxGlade
 
     def AdvancedOptions(self, evt):

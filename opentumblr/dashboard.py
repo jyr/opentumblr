@@ -15,19 +15,18 @@ ID_AUDIO = wx.NewId()
 ID_VIDEO = wx.NewId()
 ID_TUMBLELOG = wx.NewId()
 
+
 class Dashboard(wx.Frame):
     def __init__(self, parent, id, api):
         wx.Frame.__init__(self, parent, id)
         self.parent = parent
         self.api = api
-        # Tool Bar
+
         self.toolbar_dashboard = ToolBarDashboard(self, -1)
         self.SetToolBar(self.toolbar_dashboard)
-        # Tool Bar end
+
         self.panel = TumbleLog(self, -1)
         #self.panel = wx.Panel(self, -1)
-        self.b_twitter = wx.Button(self, -1, "Twitter")
-        self.b_filesocial = wx.Button(self, -1, "FileSocial")
         self.b_logout = wx.Button(self, -1, "Logout")
         self.Center()
         self.panel.SetPanel(None)
@@ -45,23 +44,22 @@ class Dashboard(wx.Frame):
 
     def __set_properties(self):
         self.SetTitle("Opentumblr")
-        self.SetSize((290, 570))
-        self.panel.SetMinSize((290, 520))
+        self.toolbar_dashboard.SetToolBitmapSize((26, 25))
+        self.toolbar_dashboard.SetToolPacking(1)
+        self.toolbar_dashboard.Realize()
+        self.panel.SetMinSize((330, 458))
+        self.panel.SetBackgroundColour(wx.Colour(47, 47, 47))
 
     def __do_layout(self):
         s_dashboard = wx.BoxSizer(wx.VERTICAL)
         s_buttons = wx.BoxSizer(wx.VERTICAL)
-        s_buttonsocials = wx.BoxSizer(wx.HORIZONTAL)
         s_dashboard.Add(self.panel, 1, wx.EXPAND, 0)
-        s_buttonsocials.Add(self.b_twitter, 1, wx.ALL|wx.EXPAND, 5)
-        s_buttonsocials.Add(self.b_filesocial, 1, wx.ALL|wx.EXPAND, 5)
-        s_buttons.Add(s_buttonsocials, 1, wx.EXPAND, 0)
-        s_buttons.Add(self.b_logout, 0, wx.EXPAND, 0)
-        s_buttons.Add((20, 20), 0, 0, 0)
+        s_buttons.Add(self.b_logout, 1, wx.ALL|wx.EXPAND, 10)
         s_dashboard.Add(s_buttons, 0, wx.EXPAND, 0)
         self.SetSizer(s_dashboard)
+        s_dashboard.Fit(self)
         self.Layout()
-        
+
     def SelectPanel(self, evt):
         evt_id = evt.GetId()
         if evt_id == ID_TEXT:
@@ -108,21 +106,20 @@ class ToolBarDashboard(wx.ToolBar):
 
         self.__set_properties()
         self.__do_layout()
-        # end wxGlade
 
     def __set_properties(self):
         self.SetToolBitmapSize((16, 15))
         self.SetToolPacking(1)
         self.Realize()
-        # end wxGlade
 
     def __do_layout(self):
         pass
 
+
 if __name__ == "__main__":
     app = wx.PySimpleApp(0)
     wx.InitAllImageHandlers()
-    f_dashboard = Dashboard(None, -1)
+    f_dashboard = Dashboard(None, -1, "")
     app.SetTopWindow(f_dashboard)
     f_dashboard.Show()
     app.MainLoop()

@@ -2,6 +2,7 @@
 # -*- coding: us-ascii -*-
 
 import urllib2
+import os, sys
 import wx
 
 try:
@@ -23,7 +24,15 @@ class Login(wx.Frame):
         self.parent = parent
         self.p_main = wx.Panel(self, -1)
         self.panel_login = wx.Panel(self.p_main, -1)
-        self.bitmap_1 = wx.StaticBitmap(self.p_main, -1, wx.Bitmap("/Users/jyr/Desarrollo/git-projects/opentumblr/images/opentumblr.png", wx.BITMAP_TYPE_ANY))
+        self.path_images = '/usr/share/pixmaps/opentumblr/dashboard/'
+
+        if not os.path.isdir(self.path_images):
+	        if sys.platform == "win32":
+		        self.path_images = os.path.abspath(os.path.dirname(__file__)) + '\\..\\images\\'
+	        else:
+	            self.path_images = os.path.abspath('images') + '/'
+	
+        self.bitmap_1 = wx.StaticBitmap(self.p_main, -1, wx.Bitmap(self.path_images + "opentumblr.png", wx.BITMAP_TYPE_ANY))
         self.l_mail = wx.StaticText(self.panel_login, -1, "E-mail address")
         self.cb_mail = wx.ComboBox(self.panel_login, -1, choices=[], style=wx.CB_DROPDOWN)
         self.l_password = wx.StaticText(self.panel_login, -1, "Password")
@@ -66,6 +75,7 @@ class Login(wx.Frame):
         self.SetSizer(s_main)
         s_main.Fit(self)
         self.Layout()
+        self.Centre()
 
     def OnAuthTumblr(self, event):
 	    self.Blog = self.tc_blog.GetValue()
@@ -79,7 +89,7 @@ class Login(wx.Frame):
 	    #assert False,dir(self.api)
 	    try:
 		    self.auth = self.api.auth_check()
-		    self.dashboard = Dashboard(None, -1, self.api)
+		    self.dashboard = Dashboard(None, -1, self.api, self.path_images)
 		    self.dashboard.Show()
 		    self.Close()
 		    #print "Te haz logueado"

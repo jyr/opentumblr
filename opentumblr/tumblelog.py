@@ -19,7 +19,9 @@ class TumbleLog(wx.Panel):
 	    self.parent = parent
 	    self.api = self.parent.api
 	    self.panel = wx.Panel(self, -1)
-	    self.bitmap_1 = wx.StaticBitmap(self.panel, -1, wx.Bitmap("/Users/jyr/Desarrollo/git-projects/opentumblr/images/opentumblr.png", wx.BITMAP_TYPE_ANY))
+	    self.path_images = self.parent.path_images
+
+	    self.bitmap_1 = wx.StaticBitmap(self.panel, -1, wx.Bitmap(self.path_images + "opentumblr.png", wx.BITMAP_TYPE_ANY))
 	    self.__set_properties()
 	    self.__do_layout()
 
@@ -71,11 +73,11 @@ class TumbleLog(wx.Panel):
         elif paneltype == "VIDEO":
             newpanel = Video(self, -1)
             self.SwitchPanel(newpanel)
-#        elif not paneltype:
-#            newpanel = MyTumbleLog(self, -1)
-#            self.SwitchPanel(newpanel)
-        else:
-            pass
+        elif not paneltype:
+            newpanel = TumbleLog(self, -1)
+            self.SwitchPanel(newpanel)
+#        else:
+#            pass
 
 """
 class MyTumbleLog(scrolled.ScrolledPanel):

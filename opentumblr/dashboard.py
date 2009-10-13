@@ -17,10 +17,11 @@ ID_TUMBLELOG = wx.NewId()
 
 
 class Dashboard(wx.Frame):
-    def __init__(self, parent, id, api):
+    def __init__(self, parent, id, api, path_images):
         wx.Frame.__init__(self, parent, id)
         self.parent = parent
         self.api = api
+        self.path_images = path_images
 
         self.toolbar_dashboard = ToolBarDashboard(self, -1)
         self.SetToolBar(self.toolbar_dashboard)
@@ -86,13 +87,7 @@ class Dashboard(wx.Frame):
 class ToolBarDashboard(wx.ToolBar):
     def __init__(self, parent, id):
         wx.ToolBar.__init__(self, parent, id, style=wx.TB_HORIZONTAL|wx.TB_TEXT)
-        self.path_images = '/usr/share/pixmaps/opentumblr/dashboard/'
-        
-        if not os.path.isdir(self.path_images):
-            if sys.platform == "win32":
-                self.path_images = os.path.abspath(os.path.dirname(__file__)) + '\\..\\images\\'
-            else:
-                self.path_images = os.path.abspath('images') + '/'
+        self.path_images = parent.path_images
 
         self.AddSeparator()
         self.AddLabelTool(ID_TEXT, "Text", wx.Bitmap(self.path_images + "text.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")

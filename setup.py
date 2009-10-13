@@ -95,17 +95,13 @@ else:
 		
 		path_images = packages_path + '/images/'
 		
-		images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png']
+		images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png','opentumblr.png']
 		for img in images:
 			image_files.append(path_images + img)
 
 		docs = ['AUTHORS','INSTALL','LICENSE','README','THANKS']
 		for doc in docs:
 			doc_files.append(packages_path + '/' + doc)
-
-		icons = ['opentumblr.png','opentumblr.xpm']
-		for icon in icons:
-			icon_files.append(path_images + icon)
 
 		if not os.path.isdir(ipath_docs):
 			if not os.path.isdir(prefix + 'share'):
@@ -119,7 +115,7 @@ else:
 			os.mkdir(ipath_images)
 			os.mkdir(ipath_dashboard)
 		
-		datafiles.append(('share/pixmaps/', icon_files))
+		
 		datafiles.append((ipath_docs, doc_files))
 		datafiles.append(('share/applications',[packages_path+'/opentumblr.desktop']))
 		datafiles.append((ipath_dashboard, image_files))

@@ -45,7 +45,7 @@ class Dashboard(wx.Frame):
 
     def __set_properties(self):
         self.SetTitle("Opentumblr")
-        self.toolbar_dashboard.SetToolBitmapSize((26, 25))
+        self.toolbar_dashboard.SetToolBitmapSize((16, 15))
         self.toolbar_dashboard.SetToolPacking(1)
         self.toolbar_dashboard.Realize()
         self.panel.SetMinSize((330, 458))

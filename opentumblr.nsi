@@ -12,7 +12,7 @@ SetCompressor lzma
   !define mui_abortwarning
 
 ;Definimos variable VERSION
-!define VERSION "0.0.4"
+!define VERSION "0.0.5"
 
 
 ;--------------------------------
@@ -48,15 +48,15 @@ SetCompressor lzma
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;Nombre del instalador
-OutFile OpenTumblr-${VERSION}-win32.exe
+OutFile Opentumblr-${VERSION}-win32.exe
 
 ;Al tener reservado un espacio fijo para este mensaje, y al ser
 ;la frase en español mas larga:
 ; Bienvenido al Asistente de Instalación de Aplicación $Name
 ; no se ve el contenido de la variable $Name si el tamaño es muy grande
-Name "OpenTumblr"
-Caption "OpenTumblr ${VERSION} para Win32 Setup"
-;Icon images\opentumblr.ico
+Name "Opentumblr"
+Caption "Opentumblr ${VERSION} para Win32 Setup"
+;Icon images\Opentumblr.ico
 
 ;Comprobacion de integridad del fichero activada
 CRCCheck on
@@ -72,10 +72,10 @@ Var PATH
 Var PATH_ACCESO_DIRECTO
 
 ;Directorio defualt de instalacion
-InstallDir "$PROGRAMFILES\OpenTumblr"
+InstallDir "$PROGRAMFILES\Opentumblr"
 
 ;Revisa si la applicacion ya esta instalada, tomando el dir para install dir
-InstallDirRegKey HKLM SOFTWARE\OPENTUMBLR "Install_Dir"
+InstallDirRegKey HKLM SOFTWARE\Opentumblr "Install_Dir"
 
 ;Mensaje para seleccionar un directorio
 DirText "Elija un directorio donde instalar la aplicación:"
@@ -96,7 +96,7 @@ SetDatablockOptimize on
 SetCompress auto
 
 ;Mensaje de desinstalación
-UninstallText "Este es el desinstalador del OpenTumblr."
+UninstallText "Este es el desinstalador del Opentumblr."
 
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -105,7 +105,7 @@ UninstallText "Este es el desinstalador del OpenTumblr."
 
 Section "Programa"
 	StrCpy $PATH ""
-	StrCpy $PATH_ACCESO_DIRECTO "OpenTumblr-${VERSION}"
+	StrCpy $PATH_ACCESO_DIRECTO "Opentumblr-${VERSION}"
 
 	SetOutPath $INSTDIR\$PATH
 
@@ -119,8 +119,8 @@ Section "Programa"
 
 	;Creacion de directorios y acesos directos
 	CreateDirectory "$SMPROGRAMS\$PATH_ACCESO_DIRECTO"
-	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\OpenTumblr-${VERSION}.lnk"\
-                       "$INSTDIR\dist\opentumblr-client.exe"
+	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\Opentumblr-${VERSION}.lnk"\
+                       "$INSTDIR\dist\Opentumblr-client.exe"
 	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\LICENSE.lnk" \
                        "$INSTDIR\LICENSE"
 
@@ -140,7 +140,7 @@ SectionEnd
 
 Section "Uninstall"
 	StrCpy $PATH ""
-	StrCpy $PATH_ACCESO_DIRECTO "OpenTumblr-${VERSION}"
+	StrCpy $PATH_ACCESO_DIRECTO "Opentumblr-${VERSION}"
         SetShellVarContext all
 	RMDir /r $SMPROGRAMS\$PATH_ACCESO_DIRECTO
 	RMDir /r $INSTDIR\$PATH

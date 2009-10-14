@@ -12,7 +12,7 @@ SetCompressor lzma
   !define mui_abortwarning
 
 ;Definimos variable VERSION
-!define VERSION "0.0.5"
+!define VERSION "0.1.0"
 
 
 ;--------------------------------
@@ -96,7 +96,7 @@ SetDatablockOptimize on
 SetCompress auto
 
 ;Mensaje de desinstalación
-UninstallText "Este es el desinstalador del Opentumblr."
+UninstallText "Este es el desinstalador de Opentumblr."
 
 
 ;;;;;;;;;;;;;;;;;;;;

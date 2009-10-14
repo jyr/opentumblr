@@ -11,7 +11,7 @@ try:
     from dashboard import Dashboard
     from invalid import Invalid
 except ImportError:
-    import opentumblr.tumblr
+    from opentumblr import tumblr
     from opentumblr.tumblr import Api
     from opentumblr.dashboard import Dashboard
     from opentumblr.invalid import Invalid

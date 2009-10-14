@@ -28,7 +28,7 @@ class Login(wx.Frame):
 
         if not os.path.isdir(self.path_images):
 	        if sys.platform == "win32":
-		        self.path_images = os.path.abspath(os.path.dirname(__file__)) + '\\..\\images\\'
+		        self.path_images = os.path.abspath(os.path.dirname(sys.argv[0])) + '\\..\\images\\'
 	        else:
 	            self.path_images = os.path.abspath('images') + '/'
 	

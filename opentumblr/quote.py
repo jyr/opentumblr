@@ -39,11 +39,11 @@ class Quote(wx.Panel):
         self.__do_layout()
 
     def __set_properties(self):
-        self.l_addquote.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+        self.l_addquote.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_quote.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        self.tc_quote.SetMinSize((250, 130))
+        #self.tc_quote.SetMinSize((250, 130))
         self.l_source.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        self.tc_source.SetMinSize((250, 130))
+        #self.tc_source.SetMinSize((250, 130))
         self.p_main.SetBackgroundColour(wx.Colour(255, 255, 255))
 
     def __do_layout(self):
@@ -53,9 +53,9 @@ class Quote(wx.Panel):
 	    s_quote.Add(self.b_options, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 2)
 	    s_quote.Add(self.l_addquote, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
 	    s_quote.Add(self.l_quote, 0, wx.ALL, 2)
-	    s_quote.Add(self.tc_quote, 0, wx.ALL|wx.EXPAND, 5)
+	    s_quote.Add(self.tc_quote, 1, wx.ALL|wx.EXPAND, 5)
 	    s_quote.Add(self.l_source, 0, wx.ALL, 2)
-	    s_quote.Add(self.tc_source, 0, wx.ALL|wx.EXPAND, 5)
+	    s_quote.Add(self.tc_source, 1, wx.ALL|wx.EXPAND, 5)
 	    s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_quote.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)

@@ -49,7 +49,7 @@ class Audio(wx.Panel):
         self.__do_layout()
 
     def __set_properties(self):
-        self.l_addaudio.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+        self.l_addaudio.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_audiofile.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         
         """
@@ -58,7 +58,7 @@ class Audio(wx.Panel):
         """
         
         self.l_caption.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        self.tc_caption.SetMinSize((250, 222))
+        #self.tc_caption.SetMinSize((250, 222))
         self.p_main.SetBackgroundColour(wx.Colour(255, 255, 255))
 
     def __do_layout(self):
@@ -80,7 +80,7 @@ class Audio(wx.Panel):
 	    s_audio.Add(s_audiofileurl, 0, wx.EXPAND, 0)
 	    """
 	    s_audio.Add(self.l_caption, 0, wx.ALL, 2)
-	    s_audio.Add(self.tc_caption, 0, wx.ALL|wx.EXPAND, 2)
+	    s_audio.Add(self.tc_caption, 1, wx.ALL|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_audio.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)

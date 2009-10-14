@@ -42,12 +42,12 @@ class Link(wx.Panel):
         self.__do_layout()
 
     def __set_properties(self):
-        self.l_addlink.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+        self.l_addlink.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_name.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.tc_name.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.l_urllink.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
         self.l_description.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
-        self.tc_description.SetMinSize((245, 203))
+        #self.tc_description.SetMinSize((245, 203))
         self.tc_description.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.p_main.SetBackgroundColour(wx.Colour(255, 255, 255))
 
@@ -62,7 +62,7 @@ class Link(wx.Panel):
 	    s_link.Add(self.l_urllink, 0, wx.ALL, 2)
 	    s_link.Add(self.tc_urllink, 0, wx.ALL|wx.EXPAND, 2)
 	    s_link.Add(self.l_description, 0, wx.ALL, 2)
-	    s_link.Add(self.tc_description, 0, wx.ALL|wx.EXPAND, 2)
+	    s_link.Add(self.tc_description, 1, wx.ALL|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_link.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)

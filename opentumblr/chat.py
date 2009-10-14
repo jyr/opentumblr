@@ -43,7 +43,7 @@ class Chat(wx.Panel):
 
     def __set_properties(self):
         self.SetFont(wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
-        self.l_addchat.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+        self.l_addchat.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_title.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.l_dialogue.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.l_example.SetBackgroundColour(wx.Colour(216, 216, 191))
@@ -52,7 +52,7 @@ class Chat(wx.Panel):
         self.l_tourist.SetFont(wx.Font(8, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
         self.l_nyorker.SetBackgroundColour(wx.Colour(216, 216, 191))
         self.l_nyorker.SetFont(wx.Font(8, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
-        self.tc_dialogue.SetMinSize((260, 202))
+        #self.tc_dialogue.SetMinSize((260, 202))
         self.p_main.SetBackgroundColour(wx.Colour(255, 255, 255))
 
     def __do_layout(self):
@@ -67,7 +67,7 @@ class Chat(wx.Panel):
 	    s_chat.Add(self.l_example, 0, wx.LEFT|wx.TOP, 2)
 	    s_chat.Add(self.l_tourist, 0, wx.LEFT, 2)
 	    s_chat.Add(self.l_nyorker, 0, wx.LEFT, 2)
-	    s_chat.Add(self.tc_dialogue, 0, wx.ALL|wx.EXPAND, 2)
+	    s_chat.Add(self.tc_dialogue, 1, wx.ALL|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_chat.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)

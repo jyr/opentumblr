@@ -25,16 +25,9 @@ class TumbleLog(wx.Panel):
 	    self.__set_properties()
 	    self.__do_layout()
 
-	    def __set_properties(self):
-	        self.SetSize((310, 462))
-
-	    def __do_layout(self):
-	        self.s_tumblelog = wx.BoxSizer(wx.VERTICAL)
-	        self.s_tumblelog.Add(self.panel, 1, wx.EXPAND, 0)
-	        self.SetSizer(self.s_tumblelog)
 
     def __set_properties(self):
-        self.SetSize((310, 462))
+        #self.SetSize((310, 462))
         self.SetBackgroundColour(wx.Colour(47, 47, 47))
 
     def __do_layout(self):

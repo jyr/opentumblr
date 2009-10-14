@@ -46,7 +46,7 @@ class Photo(wx.Panel):
         self.__do_layout()
 
     def __set_properties(self):
-        self.l_addphoto.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+        self.l_addphoto.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_photo.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.l_supports.SetFont(wx.Font(8, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_photourl.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
@@ -54,7 +54,7 @@ class Photo(wx.Panel):
         self.tc_photourl.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.l_caption.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.tc_caption.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
-        self.tc_caption.SetMinSize((100, 120))
+        #self.tc_caption.SetMinSize((100, 120))
         self.tc_photolink.SetBackgroundColour(wx.Colour(255, 255, 255))
         self.tc_photolink.SetFont(wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.p_main.SetBackgroundColour(wx.Colour(255, 255, 255))
@@ -76,7 +76,7 @@ class Photo(wx.Panel):
 	    s_photourl.Add(self.tc_photourl, 1, wx.ALL|wx.EXPAND, 2)
 	    s_photo.Add(s_photourl, 0, wx.EXPAND, 0)
 	    s_photo.Add(self.l_caption, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
-	    s_photo.Add(self.tc_caption, 0, wx.ALL|wx.EXPAND, 2)
+	    s_photo.Add(self.tc_caption, 1, wx.ALL|wx.EXPAND, 2)
 	    s_photolink.Add(self.l_photolink, 0, wx.ALL, 2)
 	    s_photolink.Add(self.tc_photolink, 0, wx.ALL|wx.EXPAND, 2)
 	    s_photo.Add(s_photolink, 0, wx.EXPAND, 0)

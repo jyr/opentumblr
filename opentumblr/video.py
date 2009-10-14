@@ -42,13 +42,13 @@ class Video(wx.Panel):
 
     def __set_properties(self):
         self.SetFont(wx.Font(11, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
-        self.l_addvideo.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+        self.l_addvideo.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_embed.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.label_1.SetForegroundColour(wx.Colour(35, 142, 107))
         self.label_1.SetFont(wx.Font(9, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
-        self.tc_embed.SetMinSize((250, 117))
+        #self.tc_embed.SetMinSize((250, 117))
         self.l_caption.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        self.tc_caption.SetMinSize((250, 118))
+        #self.tc_caption.SetMinSize((250, 118))
         self.p_main.SetBackgroundColour(wx.Colour(255, 255, 255))
 
     def __do_layout(self):
@@ -59,9 +59,9 @@ class Video(wx.Panel):
 	    s_video.Add(self.l_addvideo, 0, wx.ALL, 2)
 	    s_video.Add(self.l_embed, 0, wx.ALL, 2)
 	    s_video.Add(self.label_1, 0, wx.ALL, 2)
-	    s_video.Add(self.tc_embed, 0, wx.ALL|wx.EXPAND, 2)
+	    s_video.Add(self.tc_embed, 1, wx.ALL|wx.EXPAND, 2)
 	    s_video.Add(self.l_caption, 0, wx.ALL, 2)
-	    s_video.Add(self.tc_caption, 0, wx.ALL|wx.EXPAND, 2)
+	    s_video.Add(self.tc_caption, 1, wx.ALL|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_video.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)

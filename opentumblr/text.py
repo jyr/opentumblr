@@ -39,11 +39,11 @@ class Text(wx.Panel):
         self.__do_layout()
 
     def __set_properties(self):
-        self.l_text.SetFont(wx.Font(25, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
+        self.l_text.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.BOLD, 0, ""))
         self.l_title.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
         self.l_post.SetFont(wx.Font(15, wx.DEFAULT, wx.NORMAL, wx.NORMAL, 0, ""))
-        self.tc_post.SetMinSize((250, 250))
-        self.b_create.SetFont(wx.Font(13, wx.DECORATIVE, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
+        #self.tc_post.SetMinSize((250, 250))
+        #self.b_create.SetFont(wx.Font(13, wx.DECORATIVE, wx.NORMAL, wx.NORMAL, 0, "Lucida Grande"))
         self.p_main.SetBackgroundColour(wx.Colour(255, 255, 255))
 
     def __do_layout(self):
@@ -55,7 +55,7 @@ class Text(wx.Panel):
 	    s_text.Add(self.l_title, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
 	    s_text.Add(self.tc_title, 0, wx.ALL|wx.EXPAND, 2)
 	    s_text.Add(self.l_post, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2)
-	    s_text.Add(self.tc_post, 0, wx.ALL|wx.EXPAND, 2)
+	    s_text.Add(self.tc_post, 1, wx.ALL|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_create, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_buttons.Add(self.b_cancel, 1, wx.LEFT|wx.EXPAND, 2)
 	    s_text.Add(s_buttons, 0, wx.ALL|wx.EXPAND, 2)

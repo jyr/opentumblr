@@ -90,13 +90,13 @@ class ToolBarDashboard(wx.ToolBar):
         self.path_images = parent.path_images
 
         self.AddSeparator()
-        self.AddLabelTool(ID_TEXT, "Text", wx.Bitmap(self.path_images + "text.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_PHOTO, "Photo", wx.Bitmap(self.path_images + "photo.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_QUOTE, "Quote", wx.Bitmap(self.path_images + "quote.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_LINK, "Link", wx.Bitmap(self.path_images + "link.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_CHAT, "Chat", wx.Bitmap(self.path_images + "chat.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_AUDIO, "Audio", wx.Bitmap(self.path_images + "audio.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_VIDEO, "Video", wx.Bitmap(self.path_images + "video.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_TEXT, "", wx.Bitmap(self.path_images + "text.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_PHOTO, "", wx.Bitmap(self.path_images + "photo.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_QUOTE, "", wx.Bitmap(self.path_images + "quote.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_LINK, "", wx.Bitmap(self.path_images + "link.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_CHAT, "", wx.Bitmap(self.path_images + "chat.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_AUDIO, "", wx.Bitmap(self.path_images + "audio.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_VIDEO, "", wx.Bitmap(self.path_images + "video.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
         self.AddSeparator()
 
         self.__set_properties()

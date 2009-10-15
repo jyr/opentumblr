@@ -24,6 +24,8 @@ class Dashboard(wx.Frame):
         self.path_images = path_images
 
         self.toolbar_dashboard = ToolBarDashboard(self, -1)
+        self.toolbar_dashboard.SetToolBitmapSize((32, 32))
+        self.toolbar_dashboard.SetFont(wx.Font(29, wx.DEFAULT, wx.NORMAL,0))
         self.SetToolBar(self.toolbar_dashboard)
 
         self.panel = TumbleLog(self, -1)
@@ -83,20 +85,25 @@ class Dashboard(wx.Frame):
     def OnLogout(self, evt):
     	self.Close()
 
+class MyArtProvider(wx.ArtProvider):
+    def CreateBitmap(self, artId, artClient, size):
+	    return wx.Bitmap("images/%s.png"%artId, wx.BITMAP_TYPE_PNG)
 
 class ToolBarDashboard(wx.ToolBar):
     def __init__(self, parent, id):
         wx.ToolBar.__init__(self, parent, id, style=wx.TB_HORIZONTAL|wx.TB_TEXT)
         self.path_images = parent.path_images
 
+        wx.ArtProvider.Push(MyArtProvider())
+
         self.AddSeparator()
-        self.AddLabelTool(ID_TEXT, "", wx.Bitmap(self.path_images + "text.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_PHOTO, "", wx.Bitmap(self.path_images + "photo.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_QUOTE, "", wx.Bitmap(self.path_images + "quote.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_LINK, "", wx.Bitmap(self.path_images + "link.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_CHAT, "", wx.Bitmap(self.path_images + "chat.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_AUDIO, "", wx.Bitmap(self.path_images + "audio.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_VIDEO, "", wx.Bitmap(self.path_images + "video.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_TEXT, "Text", wx.ArtProvider.GetBitmap('text', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_PHOTO, "Photo", wx.ArtProvider.GetBitmap('photo', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_QUOTE, "Quote", wx.ArtProvider.GetBitmap('quote', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_LINK, "Link", wx.ArtProvider.GetBitmap('link', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_CHAT, "Chat", wx.ArtProvider.GetBitmap('chat', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_AUDIO, "Audio", wx.ArtProvider.GetBitmap('audio', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_VIDEO, "Video", wx.ArtProvider.GetBitmap('video', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
         self.AddSeparator()
 
         self.__set_properties()

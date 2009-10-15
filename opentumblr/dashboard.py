@@ -105,7 +105,16 @@ class ToolBarDashboard(wx.ToolBar):
         pass
 
     def __create_toolbar(self):
-	    if wx.Platform == '__WXGTK__':
+	    #assert False,wx.Platform
+	    if wx.Platform == '__WXMAC__':
+		    self.AddLabelTool(ID_TEXT, "Txt", wx.Bitmap(self.path_images + "/textmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_PHOTO, "Photo", wx.Bitmap(self.path_images + "/photomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_QUOTE, "Quote", wx.Bitmap(self.path_images + "/quotemac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_LINK, "Link", wx.Bitmap(self.path_images + "/linkmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_CHAT, "Chat", wx.Bitmap(self.path_images + "/chatmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_AUDIO, "Audio", wx.Bitmap(self.path_images + "/audiomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_VIDEO, "Video", wx.Bitmap(self.path_images + "/videomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+	    else:
 		    wx.ArtProvider.Push(MyArtProvider())
 		    size = (30, 44)
 		    self.AddLabelTool(ID_TEXT, "", wx.ArtProvider.GetBitmap(self.path_images + '/text.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
@@ -114,15 +123,7 @@ class ToolBarDashboard(wx.ToolBar):
 		    self.AddLabelTool(ID_LINK, "", wx.ArtProvider.GetBitmap(self.path_images + '/link.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
 		    self.AddLabelTool(ID_CHAT, "", wx.ArtProvider.GetBitmap(self.path_images + '/chat.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
 		    self.AddLabelTool(ID_AUDIO, "", wx.ArtProvider.GetBitmap(self.path_images + '/audio.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_VIDEO, "", wx.ArtProvider.GetBitmap(self.path_images + '/video.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-	    else:
-		    self.AddLabelTool(ID_TEXT, "Text", wx.Bitmap(self.path_images + "/textmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_PHOTO, "Photo", wx.Bitmap(self.path_images + "/photomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_QUOTE, "Quote", wx.Bitmap(self.path_images + "/quotemac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_LINK, "Link", wx.Bitmap(self.path_images + "/linkmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_CHAT, "Chat", wx.Bitmap(self.path_images + "/chatmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_AUDIO, "Audio", wx.Bitmap(self.path_images + "/audiomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_VIDEO, "Video", wx.Bitmap(self.path_images + "/videomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_VIDEO, "", wx.ArtProvider.GetBitmap(self.path_images + '/video.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")		    
 
 
 

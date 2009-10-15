@@ -66,7 +66,7 @@ else:
 		opentumblr_client = opentumblr + '\\opentumblr-client.py'
 
 		path_images = packages_path + '\\images\\'
-		images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png']
+		images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png','audiomac.png','chatmac.png','linkmac.png','photomac.png','quotemac.png','textmac.png','videomac.png','opentumblr.png']
 		for img in images:
 			image_files.append(path_images + img)
 

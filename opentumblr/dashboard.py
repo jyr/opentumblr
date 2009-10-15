@@ -24,8 +24,6 @@ class Dashboard(wx.Frame):
         self.path_images = path_images
 
         self.toolbar_dashboard = ToolBarDashboard(self, -1)
-        self.toolbar_dashboard.SetToolBitmapSize((32, 32))
-        self.toolbar_dashboard.SetFont(wx.Font(29, wx.DEFAULT, wx.NORMAL,0))
         self.SetToolBar(self.toolbar_dashboard)
 
         self.panel = TumbleLog(self, -1)

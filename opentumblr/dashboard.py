@@ -96,14 +96,19 @@ class ToolBarDashboard(wx.ToolBar):
 
         wx.ArtProvider.Push(MyArtProvider())
 
+        if wx.Platform == '__WXGTK__':
+            size = (30, 44)
+        else:
+            size = (-1,-1)
+
         self.AddSeparator()
-        self.AddLabelTool(ID_TEXT, "Text", wx.ArtProvider.GetBitmap('text', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_PHOTO, "Photo", wx.ArtProvider.GetBitmap('photo', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_QUOTE, "Quote", wx.ArtProvider.GetBitmap('quote', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_LINK, "Link", wx.ArtProvider.GetBitmap('link', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_CHAT, "Chat", wx.ArtProvider.GetBitmap('chat', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_AUDIO, "Audio", wx.ArtProvider.GetBitmap('audio', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_VIDEO, "Video", wx.ArtProvider.GetBitmap('video', wx.ART_TOOLBAR, (16, 16)), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_TEXT, "", wx.ArtProvider.GetBitmap('text', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_PHOTO, "", wx.ArtProvider.GetBitmap('photo', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_QUOTE, "", wx.ArtProvider.GetBitmap('quote', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_LINK, "", wx.ArtProvider.GetBitmap('link', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_CHAT, "", wx.ArtProvider.GetBitmap('chat', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_AUDIO, "", wx.ArtProvider.GetBitmap('audio', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.AddLabelTool(ID_VIDEO, "", wx.ArtProvider.GetBitmap('video', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
         self.AddSeparator()
 
         self.__set_properties()

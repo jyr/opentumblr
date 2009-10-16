@@ -118,16 +118,18 @@ class ToolBarDashboard(wx.ToolBar):
 		    wx.ArtProvider.Push(MyArtProvider())
 		    if wx.Platform == '__WXMSW__':
 			    size = (35, 49)
+			    self.path_images += '\\'
 		    else:
 			    size = (30, 44)
+			    self.path_images += '/'
 				
-		    self.AddLabelTool(ID_TEXT, "", wx.ArtProvider.GetBitmap(self.path_images + '/text.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_PHOTO, "", wx.ArtProvider.GetBitmap(self.path_images + '/photo.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_QUOTE, "", wx.ArtProvider.GetBitmap(self.path_images + '/quote.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_LINK, "", wx.ArtProvider.GetBitmap(self.path_images + '/link.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_CHAT, "", wx.ArtProvider.GetBitmap(self.path_images + '/chat.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_AUDIO, "", wx.ArtProvider.GetBitmap(self.path_images + '/audio.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-		    self.AddLabelTool(ID_VIDEO, "", wx.ArtProvider.GetBitmap(self.path_images + '/video.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")		    
+		    self.AddLabelTool(ID_TEXT, "", wx.ArtProvider.GetBitmap(self.path_images + 'text.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_PHOTO, "", wx.ArtProvider.GetBitmap(self.path_images + 'photo.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_QUOTE, "", wx.ArtProvider.GetBitmap(self.path_images + 'quote.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_LINK, "", wx.ArtProvider.GetBitmap(self.path_images + 'link.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_CHAT, "", wx.ArtProvider.GetBitmap(self.path_images + 'chat.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_AUDIO, "", wx.ArtProvider.GetBitmap(self.path_images + 'audio.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_VIDEO, "", wx.ArtProvider.GetBitmap(self.path_images + 'video.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")		    
 
 
 

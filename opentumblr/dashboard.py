@@ -45,9 +45,6 @@ class Dashboard(wx.Frame):
 
     def __set_properties(self):
         self.SetTitle("Opentumblr")
-        self.toolbar_dashboard.SetToolBitmapSize((16, 15))
-        self.toolbar_dashboard.SetToolPacking(1)
-        self.toolbar_dashboard.Realize()
         self.panel.SetMinSize((330, 458))
         self.panel.SetBackgroundColour(wx.Colour(47, 47, 47))
 
@@ -85,28 +82,15 @@ class Dashboard(wx.Frame):
 
 class MyArtProvider(wx.ArtProvider):
     def CreateBitmap(self, artId, artClient, size):
-	    return wx.Bitmap("images/%s.png"%artId, wx.BITMAP_TYPE_PNG)
-
+	    return wx.Bitmap(self.path_images + "/%s.png" % artId, wx.BITMAP_TYPE_PNG)
+		
 class ToolBarDashboard(wx.ToolBar):
     def __init__(self, parent, id):
-        wx.ToolBar.__init__(self, parent, id, style=wx.TB_HORIZONTAL|wx.TB_TEXT)
+        wx.ToolBar.__init__(self, parent, id, style=wx.TB_TEXT)
         self.path_images = parent.path_images
 
-        wx.ArtProvider.Push(MyArtProvider())
-
-        if wx.Platform == '__WXGTK__':
-            size = (30, 44)
-        else:
-            size = (-1,-1)
-
         self.AddSeparator()
-        self.AddLabelTool(ID_TEXT, "", wx.ArtProvider.GetBitmap('text', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_PHOTO, "", wx.ArtProvider.GetBitmap('photo', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_QUOTE, "", wx.ArtProvider.GetBitmap('quote', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_LINK, "", wx.ArtProvider.GetBitmap('link', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_CHAT, "", wx.ArtProvider.GetBitmap('chat', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_AUDIO, "", wx.ArtProvider.GetBitmap('audio', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        self.AddLabelTool(ID_VIDEO, "", wx.ArtProvider.GetBitmap('video', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.__create_toolbar()
         self.AddSeparator()
 
         self.__set_properties()
@@ -119,6 +103,27 @@ class ToolBarDashboard(wx.ToolBar):
 
     def __do_layout(self):
         pass
+
+    def __create_toolbar(self):
+	    if wx.Platform == '__WXGTK__':
+		    wx.ArtProvider.Push(MyArtProvider())
+		    size = (30, 44)
+		    self.AddLabelTool(ID_TEXT, "", wx.ArtProvider.GetBitmap('text', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_PHOTO, "", wx.ArtProvider.GetBitmap('photo', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_QUOTE, "", wx.ArtProvider.GetBitmap('quote', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_LINK, "", wx.ArtProvider.GetBitmap('link', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_CHAT, "", wx.ArtProvider.GetBitmap('chat', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_AUDIO, "", wx.ArtProvider.GetBitmap('audio', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_VIDEO, "", wx.ArtProvider.GetBitmap('video', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+	    else:
+		    self.AddLabelTool(ID_TEXT, "Text", wx.Bitmap(self.path_images + "/textmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_PHOTO, "Photo", wx.Bitmap(self.path_images + "/photomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_QUOTE, "Quote", wx.Bitmap(self.path_images + "/quotemac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_LINK, "Link", wx.Bitmap(self.path_images + "/linkmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_CHAT, "Chat", wx.Bitmap(self.path_images + "/chatmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_AUDIO, "Audio", wx.Bitmap(self.path_images + "/audiomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_VIDEO, "Video", wx.Bitmap(self.path_images + "/videomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+
 
 
 if __name__ == "__main__":

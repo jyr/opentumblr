@@ -116,7 +116,11 @@ class ToolBarDashboard(wx.ToolBar):
 		    self.AddLabelTool(ID_VIDEO, "Video", wx.Bitmap(self.path_images + "/videomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
 	    else:
 		    wx.ArtProvider.Push(MyArtProvider())
-		    size = (30, 44)
+		    if wx.Platform == '__WXMSW__':
+			    size = (35, 49)
+		    else:
+			    size = (30, 44)
+				
 		    self.AddLabelTool(ID_TEXT, "", wx.ArtProvider.GetBitmap(self.path_images + '/text.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
 		    self.AddLabelTool(ID_PHOTO, "", wx.ArtProvider.GetBitmap(self.path_images + '/photo.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
 		    self.AddLabelTool(ID_QUOTE, "", wx.ArtProvider.GetBitmap(self.path_images + '/quote.png', wx.ART_TOOLBAR, size), wx.NullBitmap, wx.ITEM_NORMAL, "", "")

@@ -2,11 +2,11 @@ import sys
 import os
 
 NAME="opentumblr-client"
-VERSION = "0.0.5"
-DESCRIPTION = "Cliente de escritorio para tumblr"
+VERSION = "0.1.0"
+DESCRIPTION = "Desktop Client for tumblr"
 AUTHOR = "Jair Gaxiola"
 AUTHOR_EMAIL = "jyr.gaxiola@gmail.com"
-URL = "http://opentumblr.tumblr.com"
+URL = "http://www.opentumblr.com"
 LICENSE = "MIT LICENSE"
 
 packages_path = os.path.abspath(os.path.dirname(__file__))
@@ -95,7 +95,7 @@ else:
 		
 		path_images = packages_path + '/images/'
 		
-		images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png','audiomac.png','chatmac.png','linkmac.png','photomac.png','quotemac.png','textmac.png','videomac.png','opentumblr.png']
+		images = ['audio.png','chat.png','link.png','photo.png','quote.png','text.png','video.png','audiomac.png','chatmac.png','linkmac.png','photomac.png','quotemac.png','textmac.png','videomac.png','opentumblr.png','opentumblr.xpm']
 		for img in images:
 			image_files.append(path_images + img)
 

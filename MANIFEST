@@ -13,8 +13,10 @@ opentumblr/dashboard.py
 opentumblr/invalid.py
 opentumblr/link.py
 opentumblr/opentumblr-client.py
+opentumblr/options.py
 opentumblr/photo.py
 opentumblr/quote.py
+opentumblr/tumblelog.py
 opentumblr/text.py
 opentumblr/tumblr.py
 opentumblr/video.py
@@ -26,5 +28,12 @@ images/photo.png
 images/quote.png
 images/text.png
 images/video.png
+images/audiomac.png
+images/chatmac.png
+images/linkmac.png
+images/photomac.png
+images/quotemac.png
+images/textmac.png
+images/videomac.png
 images/opentumblr.png
 images/opentumblr.xpm

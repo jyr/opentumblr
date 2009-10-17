@@ -107,7 +107,7 @@ class ToolBarDashboard(wx.ToolBar):
     def __create_toolbar(self):
 	    #assert False,wx.Platform
 	    if wx.Platform == '__WXMAC__':
-		    self.AddLabelTool(ID_TEXT, "Txt", wx.Bitmap(self.path_images + "/textmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+		    self.AddLabelTool(ID_TEXT, "Text", wx.Bitmap(self.path_images + "/textmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
 		    self.AddLabelTool(ID_PHOTO, "Photo", wx.Bitmap(self.path_images + "/photomac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
 		    self.AddLabelTool(ID_QUOTE, "Quote", wx.Bitmap(self.path_images + "/quotemac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
 		    self.AddLabelTool(ID_LINK, "Link", wx.Bitmap(self.path_images + "/linkmac.png", wx.BITMAP_TYPE_ANY), wx.NullBitmap, wx.ITEM_NORMAL, "", "")
